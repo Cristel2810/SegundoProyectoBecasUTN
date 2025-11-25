@@ -166,14 +166,14 @@
     box-shadow: 0 4px 14px rgba(0,0,0,0.08);
 }
 
-#modal {
+/* #modal {
     display: flex !important;
     backdrop-filter: blur(4px);
     pointer-events: auto !important;
-}
+} */
 
 /* Caja del modal */
-#modal .modal-box {
+/* #modal .modal-box {
     background: white;
     border-radius: 20px;
     padding: 2rem;
@@ -182,10 +182,10 @@
     box-shadow: 0 10px 25px rgba(0,0,0,0.15);
     animation: modalFadeIn 0.25s ease;
     pointer-events: auto !important;
-}
+} */
 
 /* Animación suave */
-@keyframes modalFadeIn {
+/* @keyframes modalFadeIn {
     from {
         opacity: 0;
         transform: translateY(10px);
@@ -194,4 +194,4 @@
         opacity: 1;
         transform: translateY(0);
     }
-}
+} */

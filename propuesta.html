@@ -42,7 +42,7 @@
     <nav class="utn-navbar">
       <div class="container nav-inner">
         <a href="index.html" class="nav-brand">
-          <img src="img/logo-utn.png" alt="Logo UTN" class="logo-utn"> <span>Portal de Becas UTN</span>
+          <img src="img/logo2.webp" alt="Logo UTN" class="logo-utn"> <span>Portal de Becas UTN</span>
         </a>
         <ul class="nav-links">
           <li><a href="index.html" class="nav-link">Inicio</a></li>
@@ -120,9 +120,8 @@
       <!-- Barra de progreso -->
       <div class="mt-4">
         <div class="w-full bg-slate-200 rounded-full h-6 overflow-hidden">
-          <div id="progreso"
-               class="bg-[var(--utn-azul)] h-6 rounded-full text-center text-white text-sm font-semibold"
-               style="width:33%">
+          <div id="progreso" class="bg-[var(--utn-azul)] h-6 rounded-full text-center text-white text-sm font-semibold"
+          style="width:33%">
             33%
           </div>
         </div>
@@ -150,15 +149,22 @@
 </section>
 
     <!-- Mini-aplicación adicional: simular pasos manualmente -->
-    <section class="bg-white rounded-2xl shadow-md p-6 mb-12">
+    <section class="bg-white rounded-2xl shadow-md p-6 mb-12 mx-auto max-w-lg text-center">
       <h3 class="text-xl font-semibold text-[var(--utn-azul-oscuro)] mb-4">Simulación interactiva</h3>
 
       <p class="text-slate-700 mb-4">Puedes avanzar o retroceder manualmente los pasos para ver cómo cambia el estado y la barra de progreso.</p>
 
-      <div class="flex items-center gap-4">
-        <button id="prevStep" class="px-4 py-2 border rounded-md">Anterior</button>
-        <div class="flex-1 text-center">Paso actual: <span id="currentStepLabel">1</span></div>
-        <button id="nextStep" class="px-4 py-2 bg-[var(--utn-naranja)] text-black rounded-md">Siguiente</button>
+      <div class="flex flex-col items-center gap-4">
+    
+        <div class="flex justify-center">
+          <button id="prevStep" class="btn-nav" style="margin-right: 1rem;">Anterior</button>
+          <button id="nextStep" class="btn-nav" style="margin-left: 1rem;">Siguiente</button>
+      </div>
+
+        <div class="text-center">
+            Paso actual: <span id="currentStepLabel">1</span>
+        </div>
+
       </div>
     </section>
 
@@ -193,6 +199,8 @@ document.addEventListener('DOMContentLoaded', () => {
       c.style.color = '#0b1220';
     });
 
+    [ circle1, circle2, circle3 ].forEach(c => c.classList.remove("active"));
+
     line12.style.width = '0%';
     line23.style.width = '0%';
 
@@ -200,15 +208,18 @@ document.addEventListener('DOMContentLoaded', () => {
       circle1.style.backgroundColor = 'var(--utn-azul)';
       circle1.style.color = '#fff';
       line12.style.width = step > 1 ? '100%' : '33%';
+      circle1.classList.add("active");
     }
     if(step >=2){
       circle2.style.backgroundColor = 'var(--utn-azul)';
       circle2.style.color = '#fff';
       line23.style.width = step > 2 ? '100%' : '50%';
+      circle2.classList.add("active");
     }
     if(step >=3){
       circle3.style.backgroundColor = 'var(--utn-azul)';
       circle3.style.color = '#fff';
+      circle3.classList.add("active");
     }
 
     const widths = {1:'33%',2:'66%',3:'100%'};

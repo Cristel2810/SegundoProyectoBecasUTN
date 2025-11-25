@@ -18,7 +18,7 @@
         <nav class="utn-navbar">
             <div class="container nav-inner">
                 <a href="index.html" class="nav-brand">
-                    <img src="img/logo-utn.png" alt="Logo UTN" class="logo-utn">
+                    <img src="img/logo2.webp" alt="Logo UTN" class="logo-utn">
                     <span>Portal de Becas UTN</span>
                 </a>
 
@@ -70,6 +70,8 @@
                             <textarea id="mensaje" rows="4" class="w-full border rounded-lg p-2 text-sm" placeholder="Escribe tu mensaje aquí..." required></textarea>
                         </div>
 
+                        
+
                         <!-- Captcha -->
                         <div class="captcha-box">
 
@@ -104,7 +106,23 @@
                         <p id="confirmMessage" class="hidden text-green-600 font-semibold text-sm mb-3">
                             ¡Tu mensaje se envió correctamente!
                         </p>
+
+                        <!-- Modal (para datos enviados en el formulario) -->
+                        <div id="modal" class="hidden col-span-1 w-full">
+                            <div class="bg-white shadow-md rounded-2xl p-6 mt-6">
+                                <h2 class="text-xl font-bold text-[var(--utn-azul-oscuro)] mb-4">Datos enviados</h2>
+                                <div id="modalContent" class="text-sm text-slate-700 space-y-1"></div>
+                            </div>
+                        </div>
                     </form>
+                </div>
+
+                <!-- Modal (para datos enviados en el formulario) -->
+                <div id="modal" class="hidden col-span-1 w-full">
+                    <div class="bg-white shadow-md rounded-2xl p-6 mt-6">
+                        <h2 class="text-xl font-bold text-[var(--utn-azul-oscuro)] mb-4">Datos enviados</h2>
+                        <div id="modalContent" class="text-sm text-slate-700 space-y-1"></div>
+                    </div>
                 </div>
 
                 <!-- Información -->
@@ -131,15 +149,7 @@
         </div>
     </footer>
 
-    <!-- Modal (para datos enviados en el formulario) -->
-    <div id="modal" class="fixed inset-0 bg-black/40 hidden items-center justify-center p-4">
-        <div class="modal-box">
-            <h2 class="text-xl font-bold text-[var(--utn-azul-oscuro)] mb-4">Datos enviados</h2>
-            <div id="modalContent" class="text-sm text-slate-700 space-y-1"></div>
-
-
-        </div>
-    </div>
+    
 
     <!-- Validaciones -->
     <script>
