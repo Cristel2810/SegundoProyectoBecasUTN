@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Portal de Becas UTN - Inicio</title>
+    <!-- para hacerlo responsivo  -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Tailwind  -->
+    <link rel="stylesheet" href="css/tailwind.css" />
+    <!-- Estilos  -->
+    <link rel="stylesheet" href="css/custom.css" />
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <header class="site-header">
+        <nav class="utn-navbar">
+            <div class="container nav-inner">
+                <a href="index.html" class="nav-brand">
+
+                    <img src="img/logo2.webp" alt="Logo UTN" class="logo-utn">
+                    <span>Portal de Becas</span>
+                    
+                </a>
+
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link nav-link--active">Inicio</a></li>
+                    <li><a href="acerca.html" class="nav-link">Acerca</a></li>
+                    <li><a href="contacto.html" class="nav-link">Contacto</a></li>
+                    <li><a href="propuesta.html" class="nav-link">Propuesta</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- HERO + CARRUSEL -->
+    <section class="hero">
+        <div class="hero-carousel">
+
+            <!-- Slide 1 -->
+            <article class="hero-slide hero-slide--active" data-index="0"
+                style="background-image: url('img/p3.avif');">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <p class="hero-kicker">Convocatoria 2026</p>
+                    <h1 class="hero-title">Solicitud de Beca <span>Socioeconómica</span></h1>
+                    <p class="hero-text">Consultá fechas, requisitos y el estado de tu solicitud desde un único portal.
+                    </p>
+                    <div class="hero-actions">
+                        <button id="btnVerPropuesta" class="btn-utn-primary">Ver cómo funciona</button>
+                        <button id="btnScrollProblema" class="btn-utn-secondary">Ver más</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Slide 2 -->
+            <article class="hero-slide" data-index="1" style="background-image: url('img/calendario.jpg');">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <p class="hero-kicker">Renovación de beca</p>
+                    <h1 class="hero-title">No pierdas tu <span>beneficio</span> por fechas.</h1>
+                    <p class="hero-text">El portal recuerda las fechas de renovación y muestra qué documentos te hacen
+                        falta.</p>
+                    <div class="hero-actions">
+                        <button class="btn-utn-secondary">Ver problemática</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Slide 3 -->
+            <article class="hero-slide" data-index="2" style="background-image: url('img/protada2.jpg');">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <p class="hero-kicker">Transparencia</p>
+                    <h1 class="hero-title">Visualizá el <span>estado</span> de tu beca.</h1>
+                    <p class="hero-text">Simulación del avance del trámite y alertas cuando existe riesgo de perder la
+                        beca.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="propuesta.html" class="btn-utn-primary">Ir a la propuesta</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Flechas -->
+            <button id="heroPrev" class="hero-arrow hero-arrow--prev">‹</button>
+            <button id="heroNext" class="hero-arrow hero-arrow--next">›</button>
+
+            <!-- Puntos -->
+            <div class="hero-dots">
+                <button class="hero-dot hero-dot--active" data-index="0"></button>
+                <button class="hero-dot" data-index="1"></button>
+                <button class="hero-dot" data-index="2"></button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- INTRO: Problema / Propuesta -->
+    <section id="intro" class="section">
+        <div class="container intro-grid">
+            <div class="intro-main">
+                <h2 class="section-title">Portal de Becas UTN</h2>
+                <p class="section-text">
+                    Esta plataforma permite centralizar información dispersa y visualizar el estado de becas UTN
+                    de manera clara y moderna.
+                </p>
+            </div>
+
+            <div class="intro-cards">
+                <article class="intro-card">
+                    <h3 class="intro-card-title">Problema</h3>
+                    <p class="intro-card-text">
+                        Procesos de beca poco claros, información repartida en correos y afiches, y fechas que se
+                        olvidan
+                        fácilmente.
+                    </p>
+                </article>
+
+                <article class="intro-card">
+                    <h3 class="intro-card-title">Propuesta</h3>
+                    <p class="intro-card-text">
+                        Un portal centralizado, visual y dinámico que muestre el estado del trámite y los riesgos
+                        de perder la beca.
+                    </p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- CARDS DINÁMICAS JSON -->
+    <section id="cards-json" class="section section-gray">
+        <div class="container">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">Información dinámica</h2>
+                    <p class="section-subtitle">
+                        Tarjetas cargadas desde <code>data/home-cards.json</code>.
+                    </p>
+                </div>
+
+                <div class="filter-group">
+                    <button data-filter="todos" class="filter-btn active">Todos</button>
+                    <button data-filter="problema" class="filter-btn">Problemas</button>
+                    <button data-filter="solucion" class="filter-btn">Soluciones</button>
+                </div>
+            </div>
+
+            <div id="cardsContainer" class="cards-grid">
+                <!-- JS inserta las tarjetas aquí -->
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            Portal de Becas UTN · ISW-512 Diseño de Aplicaciones Web · 2025
+        </div>
+    </footer>
+
+    <!-- JS -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>

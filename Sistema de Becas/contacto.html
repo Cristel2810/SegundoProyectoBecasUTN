@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Portal de Becas UTN - Contacto</title>
+
+    <link rel="stylesheet" href="css/tailwind.css" />
+    <link rel="stylesheet" href="css/custom.css" />
+    <link rel="stylesheet" href="css/contacto.css" />
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <header class="site-header">
+        <nav class="utn-navbar">
+            <div class="container nav-inner">
+                <a href="index.html" class="nav-brand">
+                    <img src="img/logo2.webp" alt="Logo UTN" class="logo-utn">
+                    <span>Portal de Becas UTN</span>
+                </a>
+
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link">Inicio</a></li>
+                    <li><a href="acerca.html" class="nav-link">Acerca</a></li>
+                    <li><a href="contacto.html" class="nav-link nav-link--active">Contacto</a></li>
+                    <li><a href="propuesta.html" class="nav-link">Propuesta</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="section bg-slate-50">
+        <div class="container space-y-12">
+            <section class="text-center py-8">
+                <h1 class="text-3xl font-bold text-[var(--utn-azul-oscuro)]">Contacto</h1>
+                <p class="text-slate-600 max-w-xl mx-auto mt-2">
+                    Envía tus consultas o comentarios acerca del Portal de la administración de Becas de la UTN.
+                </p>
+            </section>
+
+            <!-- GRID -->
+            <div class="grid gap-10 grid-cols-1 md:grid-cols-2">
+
+                <!-- FORMULARIO -->
+                <div class="form-card">
+
+                    <h2 class="text-xl font-semibold text-[var(--utn-azul-oscuro)]">Formulario de contacto</h2>
+                    <form id="contactForm" class="space-y-4">
+
+                        <div>
+                            <label for="nombre" class="font-semibold text-sm">Nombre:</label>
+                            <input id="nombre" type="text" class="w-full border rounded-lg p-2 text-sm" placeholder="Tu nombre" required>
+                        </div>
+
+                        <div>
+                            <label for="correo" class="font-semibold text-sm">Correo electrónico:</label>
+                            <input id="correo" type="email" class="w-full border rounded-lg p-2 text-sm" placeholder="correo@ejemplo.com" required>
+                        </div>
+
+                        <div>
+                            <label for="asunto" class="font-semibold text-sm">Asunto:</label>
+                            <input id="asunto" type="text" class="w-full border rounded-lg p-2 text-sm" placeholder="Motivo del mensaje" required>
+                        </div>
+
+                        <div>
+                            <label for="mensaje" class="font-semibold text-sm">Mensaje:</label>
+                            <textarea id="mensaje" rows="4" class="w-full border rounded-lg p-2 text-sm" placeholder="Escribe tu mensaje aquí..." required></textarea>
+                        </div>
+
+                        
+
+                        <!-- Captcha -->
+                        <div class="captcha-box">
+
+
+                            <h3 class="text-lg font-semibold text-center mb-4">Captcha</h3>
+
+                            <!-- Contenedor del captcha -->
+                            <div id="captchaTable" class="flex justify-center items-center space-x-2 mb-4">
+                            </div>
+
+                            <!-- Input + refrescar -->
+                            <div class="flex items-center space-x-3 mb-4">
+                                <input type="text" id="captchaInput" class="border border-gray-300 rounded-md py-2 px-3 focus:outline-none flex-1"
+                                placeholder="Ingresa el código" required>
+
+                                <button id="refreshButton"
+                                        type="button"
+                                        class="bg-blue-600 text-white px-4 py-2 rounded-md">
+                                    Refresh
+                                </button>
+                            </div>
+
+                            <p id="resultMessage" class="text-sm"></p>
+
+                        </div>
+
+                        <button type="submit"
+                                class="btn-utn-primary w-full text-center font-semibold">
+                            Enviar mensaje
+                        </button>
+
+                        <p id="confirmMessage" class="hidden text-green-600 font-semibold text-sm mb-3">
+                            ¡Tu mensaje se envió correctamente!
+                        </p>
+
+                        <!-- Modal (para datos enviados en el formulario) -->
+                        <div id="modal" class="hidden col-span-1 w-full">
+                            <div class="bg-white shadow-md rounded-2xl p-6 mt-6">
+                                <h2 class="text-xl font-bold text-[var(--utn-azul-oscuro)] mb-4">Datos enviados</h2>
+                                <div id="modalContent" class="text-sm text-slate-700 space-y-1"></div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Modal (para datos enviados en el formulario) -->
+                <div id="modal" class="hidden col-span-1 w-full">
+                    <div class="bg-white shadow-md rounded-2xl p-6 mt-6">
+                        <h2 class="text-xl font-bold text-[var(--utn-azul-oscuro)] mb-4">Datos enviados</h2>
+                        <div id="modalContent" class="text-sm text-slate-700 space-y-1"></div>
+                    </div>
+                </div>
+
+                <!-- Información -->
+                <div class="space-y-6">
+                    <div class="bg-white shadow-md rounded-2xl p-6">
+                        <h2 class="text-xl font-semibold text-[var(--utn-azul-oscuro)] mb-2">Información</h2>
+                        <p><strong>Correo:</strong> soporte@utn.ac.cr</p>
+                        <p><strong>Teléfono:</strong> 2450-0000</p>
+                        <p><strong>Oficinas:</strong> UTN - Sede Central Alajuela</p>
+                    </div>
+
+                    <!-- Mapa Interactivo -->
+                    <div id="hs-grayscale-leaflet" class="h-[300px] rounded-2xl border hs-leaflet z-10"></div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            Portal de Becas UTN · ISW-512 Diseño de Aplicaciones Web · 2025
+        </div>
+    </footer>
+
+    
+
+    <!-- Validaciones -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            
+            /* Captcha */
+            const captchaTable = document.getElementById('captchaTable');
+            const captchaInput = document.getElementById('captchaInput');
+            const refreshButton = document.getElementById('refreshButton');
+            const resultMessage = document.getElementById('resultMessage');
+
+            generateCaptchaTable();
+
+            refreshButton.addEventListener('click', function () {
+                generateCaptchaTable();
+                resultMessage.textContent = '';
+            });
+
+            function generateRandomString(length) {
+                const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+                let result = "";
+                for (let i = 0; i < length; i++) {
+                    result += chars.charAt(Math.floor(Math.random() * chars.length));
+                }
+                return result;
+            }
+
+            function generateCaptchaTable() {
+                const captchaText = generateRandomString(6);
+                captchaTable.dataset.captcha = captchaText;
+                captchaTable.innerHTML = "";
+
+                for (let i = 0; i < captchaText.length; i++) {
+                    const cell = document.createElement("div");
+                    cell.textContent = captchaText.charAt(i);
+                    cell.classList.add(
+                        "text-2xl", "font-bold", "w-10", "h-10",
+                        "text-center", "border", "border-gray-300", "rounded"
+                    );
+                    captchaTable.appendChild(cell);
+                }
+            }
+
+            /* Modal + Form */
+            const form = document.getElementById("contactForm");
+            const modal = document.getElementById("modal");
+            const modalContent = document.getElementById("modalContent");
+            const confirmMessage = document.getElementById("confirmMessage");
+
+            form.addEventListener("submit", (e) => {
+                e.preventDefault();
+
+                const nombre = document.getElementById("nombre").value.trim();
+                const correo = document.getElementById("correo").value.trim();
+                const asunto = document.getElementById("asunto").value.trim();
+                const mensaje = document.getElementById("mensaje").value.trim();
+
+                modalContent.innerHTML = `
+                    <p><strong>Nombre:</strong> ${nombre}</p>
+                    <p><strong>Correo:</strong> ${correo}</p>
+                    <p><strong>Asunto:</strong> ${asunto}</p>
+                    <p><strong>Mensaje:</strong> ${mensaje}</p>
+                `;
+
+                modal.classList.remove("hidden");
+
+                confirmMessage.classList.remove("hidden");
+                setTimeout(() => {
+                    confirmMessage.classList.add("hidden");
+                }, 3000);
+            });
+
+            
+        });
+    </script>
+
+
+    <!-- Script Mapa -->
+    <script>
+        window.addEventListener('load', () => {
+        (function () {
+            const map = L.map('hs-grayscale-leaflet', {
+            center: [10.00710650559122, -84.21645643816866], // UTN Sede Central EXACTA
+            zoom: 17,
+            maxBounds: [
+                [9, -85],
+                [11, -83]
+            ],
+            maxBoundsViscosity: 1.0
+            });
+
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+            maxZoom: 19,
+            minZoom: 2,
+            attribution: '© <a href="https://carto.com/attributions">CARTO</a>'
+            }).addTo(map);
+
+            // Marcador en la ubicación exacta
+            L.marker([10.00710650559122, -84.21645643816866])
+            .bindPopup('Universidad Técnica Nacional - Sede Central<br>Acequia Grande, Alajuela')
+            .addTo(map);
+        })();
+    });
+    </script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</body>
+</html>

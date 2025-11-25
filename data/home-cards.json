@@ -1,0 +1,37 @@
+[
+    {
+        "id": 1,
+        "tipo": "problema",
+        "titulo": "Fechas de solicitud dispersas",
+        "descripcionCorta": "Las convocatorias se comunican por distintos canales y es fácil olvidar los periodos de solicitud.",
+        "detalle": "El portal reúne en un solo lugar las fechas de solicitud, renovación y revaloración, con una vista sencilla y recordatorios visuales."
+    },
+    {
+        "id": 2,
+        "tipo": "problema",
+        "titulo": "Estado del trámite poco claro",
+        "descripcionCorta": "Muchas personas estudiantes no saben si su beca está en revisión, aprobada o en riesgo.",
+        "detalle": "La propuesta incluye un simulador que muestra la etapa actual del proceso y el porcentaje aproximado de avance."
+    },
+    {
+        "id": 3,
+        "tipo": "solucion",
+        "titulo": "Panel centralizado de becas",
+        "descripcionCorta": "Un solo sitio para consultar información oficial, requisitos y documentos necesarios.",
+        "detalle": "La página de Propuesta organiza la información por tipo de beca y permite visualizar el flujo completo del trámite."
+    },
+    {
+        "id": 4,
+        "tipo": "solucion",
+        "titulo": "Alertas y recomendaciones",
+        "descripcionCorta": "El portal indica cuando hay riesgo de perder la beca por rendimiento o carga académica.",
+        "detalle": "El simulador de riesgo utiliza situaciones frecuentes (reprobaciones, retiros, menos créditos) para orientar a la persona estudiante."
+    },
+    {
+        "id": 5,
+        "tipo": "solucion",
+        "titulo": "Lenguaje claro y visual",
+        "descripcionCorta": "La información se presenta en tarjetas, barras de progreso y mensajes cortos.",
+        "detalle": "Esto ayuda a que la persona estudiante identifique rápidamente qué debe hacer y qué consecuencias tiene cada etapa."
+    }
+]

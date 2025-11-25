@@ -1,0 +1,163 @@
+/* ===========
+   Estilos para propuesta.html
+   Solo ajustes visuales (NO toca custom.css)
+   =========== */
+
+/* Contenedor principal */
+main.container {
+    max-width: 1100px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+/* Tarjetas principales */
+.propuesta-card,
+.media-card,
+.simulacion-card {
+    border-radius: 20px;
+    background: #ffffff;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    padding: 2rem;
+}
+
+/* Mejores separaciones entre secciones */
+section {
+    margin-bottom: 3rem;
+}
+
+/* ---------- Stepper ---------- */
+
+.step-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Círculos */
+.step-circle {
+    width: 50px !important;
+    height: 50px !important;
+    font-size: 1.1rem;
+    border: 3px solid transparent;
+    transition: all .25s ease;
+}
+
+/* Mejor aspecto al estar activo */
+.step-circle.active {
+    border-color: var(--utn-naranja);
+    box-shadow: 0 0 12px rgba(255, 102, 0, .4);
+}
+
+/* Líneas de conexión */
+.step-line {
+    height: 10px;
+    background: #d8dce3;
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.step-line-fill {
+    height: 100%;
+    background: var(--utn-azul);
+    transition: width .5s ease;
+}
+
+/* --- Menor separación entre título y stepper en móvil --- */
+@media (max-width: 768px) {
+    .step-box {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+}
+
+/* ---------- Select y Botones ---------- */
+
+#estadoBeca {
+    border-radius: 10px;
+    background: #f8fafc;
+}
+
+/* Botón animar progreso */
+#btnAnimate {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* ---------- Progreso ---------- */
+
+#progreso {
+    font-weight: 600;
+    color: white !important;
+}
+
+.progress-label {
+    margin-top: .25rem;
+    font-weight: bold;
+    color: var(--utn-azul-oscuro);
+}
+
+
+/* ---------- Multimedia ---------- */
+
+.media-card {
+    padding: 1.5rem !important;
+    border-radius: 16px;
+    margin-bottom: 1rem;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    overflow: hidden;
+}
+
+.media-card .media-placeholder {
+    min-height: 110px; 
+    max-height: 160px;
+    border-radius: 12px;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+.media-placeholder {
+  min-height: 150px;
+  max-height: 140px;
+  width: 100%;
+  border-radius: 12px;
+  border: 1px dashed #cbd5e1;
+  background: #f8fafc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+
+
+/* ---------- Simulación Manual ---------- */
+
+.simulacion-card button {
+    border-radius: 8px;
+    padding: .5rem 1.25rem;
+}
+
+/* Botón siguiente más vistoso */
+#nextStep {
+    background: var(--utn-naranja);
+    color: black;
+    transition: .25s ease;
+}
+
+#nextStep:hover {
+    background: #ffb366;
+}
+
+#prevStep:hover {
+    background: #e2e8f0;
+}
+
+/* ---------- Footer ---------- */
+
+.footer {
+    margin-top: 4rem;
+}

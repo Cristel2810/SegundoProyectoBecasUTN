@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Propuesta - Portal de Becas UTN</title>
+
+  <!-- Proyecto estilos -->
+  <link rel="stylesheet" href="css/tailwind.css">
+  <link rel="stylesheet" href="css/custom.css">
+  <link rel="stylesheet" href="css/propuesta.css">
+  <style>
+    /* Estilos adicionales para propuesta */
+    .step-circle { transition: all .25s ease; }
+    .step-line { height: 8px; border-radius: 999px; background: #e6e9ee; overflow: hidden; }
+    .step-line > .step-line-fill { height: 100%; background: var(--utn-azul); width: 0%; transition: width .5s ease; }
+
+    /* Tarjetas multimedia */
+    .media-card { border-radius: 12px; border: 1px solid #e6e6e9; background: #fff; padding: 1rem; box-shadow: 0 6px 18px rgba(0,0,0,0.06); }
+    .media-placeholder { width: 100%; height: 100%; display:flex; align-items:center; justify-content:center; color: #94a3b8; font-style: italic; }
+
+    /* Contenedor principal ancho max mejor lectura */
+    main.container { max-width:1100px; }
+
+    /* Ajustes menores para el select y barra */
+    #estadoBeca { appearance: none; -webkit-appearance:none; background-image: none; }
+
+    /* Progreso numerico centrado */
+    .progress-label { text-align: center; margin-top: .5rem; color: #0b1a33; font-weight:600; }
+
+    /* Responsive tweaks */
+    @media (max-width:768px) {
+      .step-box { gap: .5rem; }
+      .step-line { display:none; }
+    }
+  </style>
+</head>
+<body class="bg-slate-50">
+
+  <!-- NAVBAR: usa tus estilos existentes -->
+  <header class="site-header">
+    <nav class="utn-navbar">
+      <div class="container nav-inner">
+        <a href="index.html" class="nav-brand">
+          <img src="img/logo2.webp" alt="Logo UTN" class="logo-utn"> <span>Portal de Becas UTN</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Inicio</a></li>
+          <li><a href="acerca.html" class="nav-link">Acerca</a></li>
+          <li><a href="contacto.html" class="nav-link">Contacto</a></li>
+          <li><a href="propuesta.html" class="nav-link nav-link--active">Propuesta</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container py-12">
+
+    <!-- título y subtítulo -->
+    <section class="text-center mb-8">
+      <h1 class="text-3xl font-bold text-[var(--utn-azul-oscuro)]">Propuesta</h1>
+      <p class="text-slate-700 max-w-2xl mx-auto mt-2">Simulación del sistema de seguimiento de becas UTN</p>
+    </section>
+
+    <!-- tarjeta principal con stepper y control -->
+    <section class="bg-white rounded-2xl shadow-md p-8 mb-8">
+  <p class="text-slate-700">
+    Esta sección muestra una versión simplificada del proceso que sigue una
+    <strong>solicitud de beca</strong> desde el envío inicial, pasando por la revisión,
+    hasta obtener un resultado final.
+  </p>
+
+  <!-- Stepper visual -->
+  <div class="mt-6">
+    <div class="flex items-center step-box gap-6 justify-center">
+
+      <!-- step 1 -->
+      <div class="flex items-center flex-col text-center">
+        <div id="circle1" class="step-circle w-12 h-12 rounded-full flex items-center justify-center bg-blue-900 text-white">1</div>
+        <div class="mt-3 font-semibold text-[var(--utn-azul-oscuro)]">Envío</div>
+        <div class="text-sm text-slate-500 mt-1">Solicitud enviada</div>
+      </div>
+
+      <!-- line 1–2 -->
+      <div class="w-32 flex items-center">
+        <div class="step-line w-full">
+          <div id="line12" class="step-line-fill" style="width:33%"></div>
+        </div>
+      </div>
+
+      <!-- step 2 -->
+      <div class="flex items-center flex-col text-center">
+        <div id="circle2" class="step-circle w-12 h-12 rounded-full flex items-center justify-center bg-slate-200 text-slate-700">2</div>
+        <div class="mt-3 font-semibold text-[var(--utn-azul-oscuro)]">Revisión</div>
+        <div class="text-sm text-slate-500 mt-1">En revisión</div>
+      </div>
+
+      <!-- line 2–3 -->
+      <div class="w-32 flex items-center">
+        <div class="step-line w-full">
+          <div id="line23" class="step-line-fill" style="width:0%"></div>
+        </div>
+      </div>
+
+      <!-- step 3 -->
+      <div class="flex items-center flex-col text-center">
+        <div id="circle3" class="step-circle w-12 h-12 rounded-full flex items-center justify-center bg-slate-200 text-slate-700">3</div>
+        <div class="mt-3 font-semibold text-[var(--utn-azul-oscuro)]">Resultado</div>
+        <div class="text-sm text-slate-500 mt-1">Resultado final</div>
+      </div>
+
+    </div>
+
+    <!-- Estado textual (sin controles extra) -->
+    <div class="mt-6">
+      <p id="textoEstado" class="text-lg font-semibold text-[var(--utn-azul-oscuro)]">
+        Estado actual: Solicitud enviada
+      </p>
+
+      <!-- Barra de progreso -->
+      <div class="mt-4">
+        <div class="w-full bg-slate-200 rounded-full h-6 overflow-hidden">
+          <div id="progreso" class="bg-[var(--utn-azul)] h-6 rounded-full text-center text-white text-sm font-semibold"
+          style="width:33%">
+            33%
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+    <!-- Multimedia -->
+    <section class="grid md:grid-cols-2 gap-8 mb-12">
+  <div class="media-card">
+    <h3 class="text-lg font-bold text-[var(--utn-azul-oscuro)] mb-3">Imagen explicativa</h3>
+    <div class="media-placeholder p-8 border border-dashed border-slate-300 rounded-xl">
+    imagen
+    </div>
+  </div>
+
+  <div class="media-card">
+    <h3 class="text-lg font-bold text-[var(--utn-azul-oscuro)] mb-3">Video corto</h3>
+    <div class="media-placeholder p-8 border border-dashed border-slate-300 rounded-xl">
+       video
+    </div>
+  </div>
+</section>
+
+    <!-- Mini-aplicación adicional: simular pasos manualmente -->
+    <section class="bg-white rounded-2xl shadow-md p-6 mb-12 mx-auto max-w-lg text-center">
+      <h3 class="text-xl font-semibold text-[var(--utn-azul-oscuro)] mb-4">Simulación interactiva</h3>
+
+      <p class="text-slate-700 mb-4">Puedes avanzar o retroceder manualmente los pasos para ver cómo cambia el estado y la barra de progreso.</p>
+
+      <div class="flex flex-col items-center gap-4">
+    
+        <div class="flex justify-center">
+          <button id="prevStep" class="btn-nav" style="margin-right: 1rem;">Anterior</button>
+          <button id="nextStep" class="btn-nav" style="margin-left: 1rem;">Siguiente</button>
+      </div>
+
+        <div class="text-center">
+            Paso actual: <span id="currentStepLabel">1</span>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">Portal de Becas UTN · ISW-512 Diseño de Aplicaciones Web · 2025</div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  const circle1 = document.getElementById('circle1');
+  const circle2 = document.getElementById('circle2');
+  const circle3 = document.getElementById('circle3');
+  const line12 = document.getElementById('line12');
+  const line23 = document.getElementById('line23');
+  const textoEstado = document.getElementById('textoEstado');
+  const progreso = document.getElementById('progreso');
+
+  const prevBtn = document.getElementById('prevStep');
+  const nextBtn = document.getElementById('nextStep');
+  const currentStepLabel = document.getElementById('currentStepLabel');
+
+  let current = 1;
+
+  function setStepVisual(step){
+    // reset
+    [circle1, circle2, circle3].forEach(c => {
+      c.style.backgroundColor = 'var(--utn-gris-claro)';
+      c.style.color = '#0b1220';
+    });
+
+    [ circle1, circle2, circle3 ].forEach(c => c.classList.remove("active"));
+
+    line12.style.width = '0%';
+    line23.style.width = '0%';
+
+    if(step >=1){
+      circle1.style.backgroundColor = 'var(--utn-azul)';
+      circle1.style.color = '#fff';
+      line12.style.width = step > 1 ? '100%' : '33%';
+      circle1.classList.add("active");
+    }
+    if(step >=2){
+      circle2.style.backgroundColor = 'var(--utn-azul)';
+      circle2.style.color = '#fff';
+      line23.style.width = step > 2 ? '100%' : '50%';
+      circle2.classList.add("active");
+    }
+    if(step >=3){
+      circle3.style.backgroundColor = 'var(--utn-azul)';
+      circle3.style.color = '#fff';
+      circle3.classList.add("active");
+    }
+
+    const widths = {1:'33%',2:'66%',3:'100%'};
+    const texts  = {1:'Solicitud enviada',2:'En revisión',3:'Resultado final'};
+
+    progreso.style.width = widths[step];
+    progreso.textContent   = widths[step];
+    textoEstado.textContent = "Estado actual: " + texts[step];
+    currentStepLabel.textContent = step;
+  }
+
+  // inicial
+  setStepVisual(current);
+
+  prevBtn.addEventListener('click', () => {
+    if(current > 1) current--;
+    setStepVisual(current);
+  });
+
+  nextBtn.addEventListener('click', () => {
+    if(current < 3) current++;
+    setStepVisual(current);
+  });
+
+});
+</script>
+
+</body>
+</html>
