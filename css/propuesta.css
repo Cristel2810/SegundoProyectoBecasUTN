@@ -215,3 +215,204 @@ section {
     background: #ffb870;
     transform: translateY(-2px);
 }
+
+.input-utn {
+    width: 100%;
+    padding: .6rem .8rem;
+    border: 1px solid #cbd5e1;
+    border-radius: .5rem;
+    background: #f8fafc;
+    margin-bottom: .5rem;
+    }
+
+    /* =======================================
+   CORRECCIONES FINALES DE DISEÑO / ESPACIADOS
+   ======================================= */
+
+/* Contenedor general */
+main.container {
+    max-width: 1050px;
+    margin: 0 auto;
+    padding-top: 2rem;
+}
+
+/* Tarjeta principal del stepper */
+.bg-white.rounded-2xl.shadow-md.p-8 {
+    margin-top: 2rem;
+    padding: 2.5rem;
+}
+
+/* Texto superior */
+section.text-center.mb-8 h1 {
+    margin-bottom: .3rem;
+}
+
+/* Párrafo introductorio */
+.bg-white.rounded-2xl.shadow-md.p-8 > p {
+    margin-bottom: 2.5rem !important;
+    line-height: 1.55;
+}
+
+/* === STEPPER === */
+#stepperContainer {
+    margin-top: 1rem;
+    margin-bottom: 3.5rem;
+}
+
+#stepperContainer .relative.flex {
+    padding-bottom: 3.5rem;
+}
+
+#stepperContainer h6 {
+    margin-bottom: 2px;
+}
+
+#stepperContainer p {
+    margin-top: 0;
+}
+
+/* Distancia entre stepper y formulario */
+#contenedorPasos {
+    margin-top: 3rem !important;
+}
+
+/* Tarjetas de los pasos */
+#contenedorPasos > div {
+    padding: 2rem 2.2rem;
+}
+
+/* Inputs del paso 1 más separados */
+#contenedorPasos label {
+    font-weight: 600;
+    color: #0f172a;
+    margin-bottom: 2px;
+    display: block;
+}
+
+#contenedorPasos .input-utn {
+    margin-bottom: 1rem !important;
+}
+
+/* Botón Enviar (paso 1) */
+#contenedorPasos button {
+    margin-top: 1.3rem;
+    padding: .65rem;
+    font-weight: 600;
+}
+
+/* Botones Prev / Next */
+#btnPrev, #btnNext {
+    padding: .75rem 1.8rem !important;
+    border-radius: 12px;
+}
+
+/* Sección "Simulación interactiva" */
+.simulacion-card {
+    margin-top: 4rem !important;
+}
+
+/* Ajustes de los botones inferiores manuales */
+.simulacion-card button {
+    padding: .65rem 1.5rem;
+    margin-top: .5rem;
+}
+
+/* Footer más separado */
+footer.footer {
+    margin-top: 5rem;
+}
+
+#lineProgress {
+    transition: width .55s ease-in-out !important;
+}
+
+#stepperContainer .rounded-full {
+    width: 48px !important;
+    height: 48px !important;
+    font-size: 1rem;
+    font-weight: 600;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #cbd5e1;
+    transition: all .25s ease-in-out;
+}
+
+/* Paso activo */
+#stepperContainer .rounded-full.bg-gray-900 {
+    background: var(--utn-azul) !important;
+    border-color: var(--utn-azul);
+    color: white !important;
+    transform: scale(1.05);
+}
+
+/* Pasos pendientes */
+#stepperContainer .rounded-full.bg-gray-300 {
+    background: #e2e8f0 !important;
+    color: #334155 !important;
+}
+
+/* Etiquetas debajo */
+#stepperContainer h6 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+#stepperContainer p {
+    font-size: 0.8rem;
+    color: #475569;
+}
+
+/* Línea gris (estilo Flowbite) */
+#stepperContainer .bg-gray-300 {
+    background-color: #cbd5e1 !important;
+}
+
+/* Línea animada */
+#lineProgress {
+    height: 4px !important;
+    background: var(--utn-azul) !important;
+    border-radius: 999px;
+    transition: width .55s ease !important;
+}
+
+/* Acomodo visual general */
+#stepperContainer .relative.flex {
+    gap: 0.5rem;
+    padding-bottom: 6rem !important;
+}
+/* Mejoramiento responsive parecido al <ol> */
+@media (max-width: 640px) {
+    #stepperContainer h6,
+    #stepperContainer p {
+        display: none;
+    }
+
+    #stepperContainer .rounded-full {
+        width: 42px !important;
+        height: 42px !important;
+    }
+}
+
+/* Espaciado sutil entre steps */
+#stepperContainer .grid {
+    margin: 0 0.3rem;
+}
+
+/* Label debajo del círculo */
+#stepperContainer .step-label{
+  position: absolute;  
+  bottom: -6.5rem; 
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: max-content;
+  z-index: 20;
+  pointer-events: none;
+}
+
+
+#stepperContainer .relative.flex {
+  padding-bottom: 7rem !important;
+}

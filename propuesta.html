@@ -70,68 +70,66 @@
     hasta obtener un resultado final.
   </p>
 
-  <!-- Stepper visual -->
-  <div class="mt-6">
-    <div class="flex items-center step-box gap-6 justify-center">
+  <!-- Stepper -->
+<div id="stepperContainer" class="w-full px-10 py-4">
+  <div class="relative flex items-center justify-between w-full">
 
-      <!-- step 1 -->
-      <div class="flex items-center flex-col text-center">
-        <div id="circle1" class="step-circle w-12 h-12 rounded-full flex items-center justify-center bg-blue-900 text-white">1</div>
-        <div class="mt-3 font-semibold text-[var(--utn-azul-oscuro)]">Envío</div>
-        <div class="text-sm text-slate-500 mt-1">Solicitud enviada</div>
-      </div>
+    <!-- Línea gris (fondo) -->
+    <div class="absolute left-0 top-1/2 w-full h-1 -translate-y-1/2 bg-gray-300 z-0"></div>
 
-      <!-- line 1–2 -->
-      <div class="w-32 flex items-center">
-        <div class="step-line w-full">
-          <div id="line12" class="step-line-fill" style="width:33%"></div>
-        </div>
-      </div>
-
-      <!-- step 2 -->
-      <div class="flex items-center flex-col text-center">
-        <div id="circle2" class="step-circle w-12 h-12 rounded-full flex items-center justify-center bg-slate-200 text-slate-700">2</div>
-        <div class="mt-3 font-semibold text-[var(--utn-azul-oscuro)]">Revisión</div>
-        <div class="text-sm text-slate-500 mt-1">En revisión</div>
-      </div>
-
-      <!-- line 2–3 -->
-      <div class="w-32 flex items-center">
-        <div class="step-line w-full">
-          <div id="line23" class="step-line-fill" style="width:0%"></div>
-        </div>
-      </div>
-
-      <!-- step 3 -->
-      <div class="flex items-center flex-col text-center">
-        <div id="circle3" class="step-circle w-12 h-12 rounded-full flex items-center justify-center bg-slate-200 text-slate-700">3</div>
-        <div class="mt-3 font-semibold text-[var(--utn-azul-oscuro)]">Resultado</div>
-        <div class="text-sm text-slate-500 mt-1">Resultado final</div>
-      </div>
-
+    <!-- Línea animada -->
+    <div id="lineProgress"
+        class="absolute left-0 top-1/2 h-1 -translate-y-1/2 bg-gray-900 z-10 duration-500"
+        style="width:0%; transition-property: width;">
     </div>
 
-    <!-- Estado textual (sin controles extra) -->
-    <div class="mt-6">
-      <p id="textoEstado" class="text-lg font-semibold text-[var(--utn-azul-oscuro)]">
-        Estado actual: Solicitud enviada
-      </p>
-
-      <!-- Barra de progreso -->
-      <div class="mt-4">
-        <div class="w-full bg-slate-200 rounded-full h-6 overflow-hidden">
-          <div id="progreso" class="bg-[var(--utn-azul)] h-6 rounded-full text-center text-white text-sm font-semibold"
-          style="width:33%">
-            33%
-          </div>
-        </div>
-      </div>
+    <!-- STEP 1 -->
+    <div class="relative z-20 grid w-10 h-10 font-bold text-white bg-gray-900 rounded-full place-items-center">
+      1
+      <div class="step-label">
+        <h6 class="font-semibold text-gray-700">Envío</h6>
+        <p class="text-gray-700 text-sm">Formulario de datos</p>
+    </div>
     </div>
 
+    <!-- STEP 2 -->
+    <div id="step2circle"
+         class="relative z-20 grid w-10 h-10 font-bold text-gray-900 bg-gray-300 rounded-full place-items-center">
+      2
+      <div class="step-label">
+        <h6 class="font-semibold text-gray-700">Envío</h6>
+        <p class="text-gray-700 text-sm">Formulario de datos</p>
+    </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div id="step3circle"
+         class="relative z-20 grid w-10 h-10 font-bold text-gray-900 bg-gray-300 rounded-full place-items-center">
+      3
+      <div class="step-label">
+        <h6 class="font-semibold text-gray-700">Envío</h6>
+        <p class="text-gray-700 text-sm">Formulario de datos</p>
+    </div>
+    </div>
   </div>
+</div>
+
+  <!-- CONTENIDO DEL PASO -->
+  <div id="contenedorPasos" class="mt-20"></div>
+
+  <!-- CONTROLES -->
+  <div class="flex justify-between mt-10">
+    <button id="btnPrev" class="rounded-lg bg-gray-900 py-3 px-6 text-xs font-bold uppercase text-white disabled:opacity-50">
+      Anterior
+    </button>
+    <button id="btnNext" class="rounded-lg bg-gray-900 py-3 px-6 text-xs font-bold uppercase text-white disabled:opacity-50">
+      Siguiente
+    </button>
+</div>
+
 </section>
 
-    <!-- Multimedia -->
+    <!-- Multimedia
     <section class="grid md:grid-cols-2 gap-8 mb-12">
   <div class="media-card">
     <h3 class="text-lg font-bold text-[var(--utn-azul-oscuro)] mb-3">Imagen explicativa</h3>
@@ -146,27 +144,8 @@
        video
     </div>
   </div>
-</section>
+</section> -->
 
-    <!-- Mini-aplicación adicional: simular pasos manualmente -->
-    <section class="bg-white rounded-2xl shadow-md p-6 mb-12 mx-auto max-w-lg text-center">
-      <h3 class="text-xl font-semibold text-[var(--utn-azul-oscuro)] mb-4">Simulación interactiva</h3>
-
-      <p class="text-slate-700 mb-4">Puedes avanzar o retroceder manualmente los pasos para ver cómo cambia el estado y la barra de progreso.</p>
-
-      <div class="flex flex-col items-center gap-4">
-    
-        <div class="flex justify-center">
-          <button id="prevStep" class="btn-nav" style="margin-right: 1rem;">Anterior</button>
-          <button id="nextStep" class="btn-nav" style="margin-left: 1rem;">Siguiente</button>
-      </div>
-
-        <div class="text-center">
-            Paso actual: <span id="currentStepLabel">1</span>
-        </div>
-
-      </div>
-    </section>
 
   </main>
 
@@ -174,78 +153,253 @@
     <div class="container footer-inner">Portal de Becas UTN · ISW-512 Diseño de Aplicaciones Web · 2025</div>
   </footer>
 
+  <!-- Modal -->
+  <dialog id="modalEnvio" class="modal">
+  <div class="modal-box">
+    <h3 class="text-lg font-bold">Envío realizado</h3>
+    <p class="py-4">Los datos fueron enviados correctamente.</p>
+    <div class="modal-action">
+      <form method="dialog">
+        <button class="btn">Cerrar</button>
+      </form>
+    </div>
+  </div>
+</dialog>
+
   <!-- Scripts -->
+
   <script>
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
 
-  const circle1 = document.getElementById('circle1');
-  const circle2 = document.getElementById('circle2');
-  const circle3 = document.getElementById('circle3');
-  const line12 = document.getElementById('line12');
-  const line23 = document.getElementById('line23');
-  const textoEstado = document.getElementById('textoEstado');
-  const progreso = document.getElementById('progreso');
+  // ELEMENTOS DEL STEPPER
+  const step2 = document.getElementById("step2circle");
+  const step3 = document.getElementById("step3circle");
+  const lineProgress = document.getElementById("lineProgress");
+  const btnPrev = document.getElementById("btnPrev");
+  const btnNext = document.getElementById("btnNext");
+  const contenedor = document.getElementById("contenedorPasos");
 
-  const prevBtn = document.getElementById('prevStep');
-  const nextBtn = document.getElementById('nextStep');
-  const currentStepLabel = document.getElementById('currentStepLabel');
+  let paso = 1;
+  let datosUsuario = {};
 
-  let current = 1;
+  actualizarStepper();
+  cargarPaso();
 
-  function setStepVisual(step){
-    // reset
-    [circle1, circle2, circle3].forEach(c => {
-      c.style.backgroundColor = 'var(--utn-gris-claro)';
-      c.style.color = '#0b1220';
-    });
+  btnPrev.onclick = () => {
+    if (paso > 1) paso--;
+    actualizarStepper();
+    cargarPaso();
+  };
 
-    [ circle1, circle2, circle3 ].forEach(c => c.classList.remove("active"));
+  btnNext.onclick = () => {
+    if (paso < 3) paso++;
+    actualizarStepper();
+    cargarPaso();
+  };
 
-    line12.style.width = '0%';
-    line23.style.width = '0%';
+  function actualizarStepper() {
+    lineProgress.style.width = "0%";
+    step2.classList.remove("bg-gray-900", "text-white");
+    step3.classList.remove("bg-gray-900", "text-white");
 
-    if(step >=1){
-      circle1.style.backgroundColor = 'var(--utn-azul)';
-      circle1.style.color = '#fff';
-      line12.style.width = step > 1 ? '100%' : '33%';
-      circle1.classList.add("active");
+    step2.classList.add("bg-gray-300", "text-gray-900");
+    step3.classList.add("bg-gray-300", "text-gray-900");
+
+    if (paso >= 2) {
+      step2.classList.add("bg-gray-900", "text-white");
+      lineProgress.style.width = "50%";
     }
-    if(step >=2){
-      circle2.style.backgroundColor = 'var(--utn-azul)';
-      circle2.style.color = '#fff';
-      line23.style.width = step > 2 ? '100%' : '50%';
-      circle2.classList.add("active");
+    if (paso === 3) {
+      step3.classList.add("bg-gray-900", "text-white");
+      lineProgress.style.width = "100%";
     }
-    if(step >=3){
-      circle3.style.backgroundColor = 'var(--utn-azul)';
-      circle3.style.color = '#fff';
-      circle3.classList.add("active");
-    }
-
-    const widths = {1:'33%',2:'66%',3:'100%'};
-    const texts  = {1:'Solicitud enviada',2:'En revisión',3:'Resultado final'};
-
-    progreso.style.width = widths[step];
-    progreso.textContent   = widths[step];
-    textoEstado.textContent = "Estado actual: " + texts[step];
-    currentStepLabel.textContent = step;
   }
 
-  // inicial
-  setStepVisual(current);
+  function cargarPaso() {
+    if (paso === 1) cargarPaso1();
+    if (paso === 2) cargarPaso2();
+    if (paso === 3) cargarPaso3();
 
-  prevBtn.addEventListener('click', () => {
-    if(current > 1) current--;
-    setStepVisual(current);
-  });
+    btnPrev.disabled = paso === 1;
+    btnNext.disabled = false;
+  }
 
-  nextBtn.addEventListener('click', () => {
-    if(current < 3) current++;
-    setStepVisual(current);
-  });
+  /* =======================================================
+     PASO 1 – ENVÍO
+  ======================================================= */
+  function cargarPaso1() {
+    contenedor.innerHTML = `
+      <div class="p-6 bg-white rounded-xl shadow">
+        <h2 class="text-xl font-bold mb-4">Datos del solicitante</h2>
+
+        <label>Nombre y apellido:</label>
+        <input id="nombre" type="text" class="input-utn mb-3" placeholder="Ej: Juan Pérez">
+
+        <label>Cédula:</label>
+        <input id="cedula" type="text" class="input-utn mb-3">
+
+        <label>Correo electrónico:</label>
+        <input id="correo" type="email" class="input-utn mb-3">
+
+        <label>Tipo de beca:</label>
+        <select id="beca" class="input-utn mb-4">
+          <option value="Socioeconómica">Beca socioeconómica</option>
+          <option value="Alimentación">Beca de alimentación</option>
+          <option value="Residencial">Beca de apoyo residencial</option>
+        </select>
+
+        <label>Subir archivo probatorio de datos:</label>
+        <input id="archivoPDF" type="file" accept="application/pdf" class="input-utn">
+
+        <button id="btnEnviar" class="mt-6 w-full rounded-lg bg-gray-900 text-white py-2">Enviar</button>
+      </div>
+    `;
+
+    document.getElementById("btnEnviar").onclick = () => {
+      const file = document.getElementById("archivoPDF").files[0];
+      if (!file || file.type !== "application/pdf") {
+        alert("Solo se permiten archivos PDF.");
+        return;
+      }
+
+      datosUsuario = {
+        nombre: document.getElementById("nombre").value,
+        cedula: document.getElementById("cedula").value,
+        correo: document.getElementById("correo").value,
+        beca: document.getElementById("beca").value
+      };
+
+      document.getElementById("modalEnvio").showModal();
+    };
+  }
+
+  /* =======================================================
+     PASO 2 – REVISIÓN
+  ======================================================= */
+  let estadoRevision = "pendiente"; // pendiente | pausa | finalizada
+
+  function cargarPaso2() {
+    let html = "";
+
+    html += `
+      <div class="bg-white p-6 shadow rounded-xl mb-4">
+        <h2 class="text-xl font-bold mb-2">Estado de revisión</h2>
+    `;
+
+    if (estadoRevision === "pendiente") {
+      const dias = Math.floor(Math.random() * 4) + 2;
+      html += `
+        <p class="text-gray-700 mb-4">
+          La solicitud está <strong>pendiente</strong> de revisión.<br>
+          Tiempo estimado: ${dias} días.
+        </p>
+      `;
+    }
+
+    if (estadoRevision === "pausa") {
+      html += `
+        <p class="text-gray-700 mb-3">
+          La revisión está <strong>en pausa</strong> debido a documentación faltante:<br>
+          <strong>Documentación de bienes inmuebles</strong>.
+        </p>
+
+        <label>Subir documento PDF faltante:</label>
+        <input id="archivoExtra" type="file" accept="application/pdf" class="input-utn mb-3">
+
+        <button id="btnSubirExtra" class="bg-gray-900 text-white px-4 py-2 rounded-lg">
+          Enviar y continuar revisión
+        </button>
+      `;
+    }
+
+    if (estadoRevision === "finalizada") {
+      const hora = new Date().toLocaleTimeString();
+      html += `
+        <p class="text-gray-700 mb-4">
+          La revisión finalizó a las <strong>${hora}</strong>.
+          Presione siguiente para ver el resultado.
+        </p>
+      `;
+    }
+
+    // BOTONES DE SIMULACIÓN
+    html += `
+      <div class="mt-6 flex gap-3">
+        <button id="btnSimPendiente" class="px-4 py-2 rounded bg-gray-300">Simular pendiente</button>
+        <button id="btnSimPausa" class="px-4 py-2 rounded bg-gray-300">Simular pausa</button>
+        <button id="btnSimFinal" class="px-4 py-2 rounded bg-gray-300">Simular finalizada</button>
+      </div>
+    `;
+
+    html += `</div>`;
+
+    contenedor.innerHTML = html;
+
+    // EVENTOS
+    document.getElementById("btnSimPendiente").onclick = () => { estadoRevision = "pendiente"; cargarPaso2(); };
+    document.getElementById("btnSimPausa").onclick = () => { estadoRevision = "pausa"; cargarPaso2(); };
+    document.getElementById("btnSimFinal").onclick = () => { estadoRevision = "finalizada"; cargarPaso2(); };
+
+    const extra = document.getElementById("btnSubirExtra");
+    if (extra) {
+      extra.onclick = () => {
+        const file = document.getElementById("archivoExtra").files[0];
+        if (!file || file.type !== "application/pdf") {
+          alert("El archivo debe ser PDF.");
+          return;
+        }
+        estadoRevision = "pendiente";
+        cargarPaso2();
+      };
+    }
+  }
+
+  /* =======================================================
+     PASO 3 – RESULTADO
+  ======================================================= */
+  let resultadoFinal = "rechazada"; // aceptada | rechazada
+
+  function cargarPaso3() {
+    contenedor.innerHTML = `
+      <div class="bg-white p-6 shadow rounded-xl">
+        <h2 class="text-xl font-bold mb-4">Resultado de la solicitud</h2>
+
+        <p class="mb-3">
+          Estado final:
+          <strong>${resultadoFinal === "aceptada" ? "Aceptada" : "Rechazada"}</strong>
+        </p>
+
+        ${resultadoFinal === "rechazada"
+          ? `<p class="text-red-600 font-semibold">Motivo: Documentación errónea.</p>`
+          : `<p class="text-green-700 font-semibold">La solicitud fue aceptada correctamente.</p>`
+        }
+
+        <hr class="my-4">
+
+        <h3 class="font-bold mb-2">Datos del solicitante:</h3>
+        <p><strong>Nombre:</strong> ${datosUsuario.nombre}</p>
+        <p><strong>Cédula:</strong> ${datosUsuario.cedula}</p>
+        <p><strong>Correo:</strong> ${datosUsuario.correo}</p>
+        <p><strong>Beca solicitada:</strong> ${datosUsuario.beca}</p>
+
+        <div class="mt-6 flex gap-3">
+          <button id="btnSetAceptar" class="px-4 py-2 bg-green-600 text-white rounded">Simular Aceptada</button>
+          <button id="btnSetRechazar" class="px-4 py-2 bg-red-600 text-white rounded">Simular Rechazada</button>
+        </div>
+      </div>
+    `;
+
+    document.getElementById("btnSetAceptar").onclick = () => {
+      resultadoFinal = "aceptada"; cargarPaso3();
+    };
+    document.getElementById("btnSetRechazar").onclick = () => {
+      resultadoFinal = "rechazada"; cargarPaso3();
+    };
+  }
 
 });
 </script>
+
 
 </body>
 </html>
