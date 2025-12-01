@@ -5,8 +5,8 @@
     <meta charset="UTF-8" />
     <title>Portal de Becas UTN - Acerca del proyecto</title>
 
-     <!-- para hacerlo responsivo  -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- para hacerlo responsivo  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/tailwind.css" />
     <link rel="stylesheet" href="css/custom.css" />
 </head>
@@ -53,21 +53,23 @@
             </section>
 
             <!--  AUTORES -->
-            <section class="space-y-4">
-                <div class="text-center space-y-1">
-                    <h2 class="text-xl font-bold text-[var(--utn-azul-oscuro)]">Autores</h2>
-                    
-                </div>
+            <section class="text-center space-y-4">
+                <h2 class="text-xl font-bold text-[var(--utn-azul-oscuro)]">Autores</h2>
+            </section>
 
-                <div class="flex justify-center">
-                    <button id="btnResaltarAutores"
-                        class="btn-utn-secondary text-xs px-4 py-2 bg-white border border-slate-200 text-slate-700 hover:bg-slate-100">
-                        Resaltar autores
-                    </button>
-                </div>
+            <div class="flex justify-center my-4">
+                <button id="btnResaltarAutores"
+                    class="btn-utn-secondary text-xs px-4 py-2 bg-white border border-slate-200 text-slate-700 hover:bg-slate-100">
+                    Resaltar autores
+                </button>
+            </div>
 
-                <!-- Cards generadas por JS -->
+            <section>
                 <div id="autoresContainer" class="autores-grid"></div>
+            </section>
+
+            <!-- Cards generadas por JS -->
+            <div id="autoresContainer" class="autores-grid"></div>
             </section>
 
             <!-- FOOTER TEXT -->
