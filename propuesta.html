@@ -119,10 +119,11 @@
 
   <!-- CONTROLES -->
   <div class="flex justify-between mt-10">
-    <button id="btnPrev" class="rounded-lg bg-gray-900 py-3 px-6 text-xs font-bold uppercase text-white disabled:opacity-50">
+    <button id="btnPrev" class="btn-utn btn-utn-light disabled:opacity-50">
       Anterior
     </button>
-    <button id="btnNext" class="rounded-lg bg-gray-900 py-3 px-6 text-xs font-bold uppercase text-white disabled:opacity-50">
+    <button id="btnNext" class="btn-utn btn-utn-dark disabled:opacity-50">
+
       Siguiente
     </button>
 </div>
@@ -156,54 +157,87 @@
   <!-- Modal -->
   <dialog id="modalEnvio" class="modal">
   <div class="modal-box">
-    <h3 class="text-lg font-bold">Envío realizado</h3>
-    <p class="py-4">Los datos fueron enviados correctamente.</p>
+    <h3 class="text-lg font-bold">Datos enviados</h3>
+
+    <p class="py-2"><strong>Nombre:</strong> <span id="mNombre"></span></p>
+    <p class="py-2"><strong>Cédula:</strong> <span id="mCedula"></span></p>
+    <p class="py-2"><strong>Correo:</strong> <span id="mCorreo"></span></p>
+    <p class="py-2"><strong>Beca solicitada:</strong> <span id="mBeca"></span></p>
+
     <div class="modal-action">
-      <form method="dialog">
-        <button class="btn">Cerrar</button>
-      </form>
+      <button id="modalContinuarBtn" class="btn">Continuar</button>
     </div>
   </div>
 </dialog>
 
   <!-- Scripts -->
 
-  <script>
+ <script>
 document.addEventListener("DOMContentLoaded", () => {
 
-  // ELEMENTOS DEL STEPPER
+  // ELEMENTOS STEP
   const step2 = document.getElementById("step2circle");
   const step3 = document.getElementById("step3circle");
   const lineProgress = document.getElementById("lineProgress");
   const btnPrev = document.getElementById("btnPrev");
   const btnNext = document.getElementById("btnNext");
   const contenedor = document.getElementById("contenedorPasos");
+  const modalEnvio = document.getElementById("modalEnvio");
 
   let paso = 1;
-  let datosUsuario = {};
+  let datosUsuario = {
+    nombre: "",
+    cedula: "",
+    correo: "",
+    beca: ""
+  };
+
+  let datosEnviados = false;
 
   actualizarStepper();
   cargarPaso();
 
   btnPrev.onclick = () => {
     if (paso > 1) paso--;
-    actualizarStepper();
     cargarPaso();
+    actualizarStepper();
   };
 
   btnNext.onclick = () => {
-    if (paso < 3) paso++;
-    actualizarStepper();
-    cargarPaso();
-  };
 
+    if (paso === 1 && !datosEnviados) {
+
+        // Verifica si hay campos vacíos para dar un mensaje más preciso
+        const nombre = document.getElementById("nombre")?.value.trim();
+        const cedula = document.getElementById("cedula")?.value.trim();
+        const correo = document.getElementById("correo")?.value.trim();
+        const beca = document.getElementById("beca")?.value;
+        const file = document.getElementById("archivoPDF")?.files[0];
+
+        if (!nombre || !cedula || !correo || !beca || !file) {
+            alert("Debe llenar todos los datos y subir el PDF antes de continuar.");
+            return;
+        }
+
+        // Si llenó todo pero no presionó Enviar, avisar
+        alert("Debe presionar el botón ENVIAR antes de continuar.");
+        return;
+    }
+
+    // Si todo está completo, avanza
+    if (paso < 3) paso++;
+    cargarPaso();
+    actualizarStepper();
+};
+
+  /* ---------------------------------------------------------
+     ACTUALIZA STEPPER VISUAL
+  --------------------------------------------------------- */
   function actualizarStepper() {
     lineProgress.style.width = "0%";
-    step2.classList.remove("bg-gray-900", "text-white");
-    step3.classList.remove("bg-gray-900", "text-white");
 
-    step2.classList.add("bg-gray-300", "text-gray-900");
-    step3.classList.add("bg-gray-300", "text-gray-900");
+    step2.className = "relative z-20 grid w-10 h-10 font-bold bg-gray-300 text-gray-900 rounded-full place-items-center";
+    step3.className = "relative z-20 grid w-10 h-10 font-bold bg-gray-300 text-gray-900 rounded-full place-items-center";
 
     if (paso >= 2) {
       step2.classList.add("bg-gray-900", "text-white");
@@ -213,27 +247,21 @@ document.addEventListener("DOMContentLoaded", () => {
       step3.classList.add("bg-gray-900", "text-white");
       lineProgress.style.width = "100%";
     }
-  }
-
-  function cargarPaso() {
-    if (paso === 1) cargarPaso1();
-    if (paso === 2) cargarPaso2();
-    if (paso === 3) cargarPaso3();
 
     btnPrev.disabled = paso === 1;
-    btnNext.disabled = false;
+    btnNext.disabled = (paso === 1 && !datosEnviados);
   }
 
-  /* =======================================================
-     PASO 1 – ENVÍO
-  ======================================================= */
+  /* ---------------------------------------------------------
+     PASO 1 — FORMULARIO
+  --------------------------------------------------------- */
   function cargarPaso1() {
     contenedor.innerHTML = `
       <div class="p-6 bg-white rounded-xl shadow">
         <h2 class="text-xl font-bold mb-4">Datos del solicitante</h2>
 
         <label>Nombre y apellido:</label>
-        <input id="nombre" type="text" class="input-utn mb-3" placeholder="Ej: Juan Pérez">
+        <input id="nombre" type="text" class="input-utn mb-3">
 
         <label>Cédula:</label>
         <input id="cedula" type="text" class="input-utn mb-3">
@@ -243,45 +271,71 @@ document.addEventListener("DOMContentLoaded", () => {
 
         <label>Tipo de beca:</label>
         <select id="beca" class="input-utn mb-4">
+          <option value="">Seleccione la beca</option>
           <option value="Socioeconómica">Beca socioeconómica</option>
           <option value="Alimentación">Beca de alimentación</option>
           <option value="Residencial">Beca de apoyo residencial</option>
         </select>
 
-        <label>Subir archivo probatorio de datos:</label>
+        <label>Subir archivo probatorio (PDF):</label>
         <input id="archivoPDF" type="file" accept="application/pdf" class="input-utn">
 
-        <button id="btnEnviar" class="mt-6 w-full rounded-lg bg-gray-900 text-white py-2">Enviar</button>
+        <button id="btnEnviar" class="mt-6 w-full btn-utn btn-utn-dark">Enviar</button>
       </div>
     `;
 
+    // Repoblar valores si existen
+    document.getElementById("nombre").value = datosUsuario.nombre;
+    document.getElementById("cedula").value = datosUsuario.cedula;
+    document.getElementById("correo").value = datosUsuario.correo;
+    document.getElementById("beca").value = datosUsuario.beca;
+
+    // BOTÓN ENVIAR
     document.getElementById("btnEnviar").onclick = () => {
-      const file = document.getElementById("archivoPDF").files[0];
-      if (!file || file.type !== "application/pdf") {
-        alert("Solo se permiten archivos PDF.");
+
+      const nombre = document.getElementById("nombre").value.trim();
+      const cedula = document.getElementById("cedula").value.trim();
+      const correo = document.getElementById("correo").value.trim();
+      const beca = document.getElementById("beca").value;
+      const archivo = document.getElementById("archivoPDF").files[0];
+
+      if (!nombre || !cedula || !correo || !beca || !archivo) {
+        alert("Debe completar todos los campos.");
+        return;
+      }
+      if (archivo.type !== "application/pdf") {
+        alert("Solo se admiten archivos PDF.");
         return;
       }
 
-      datosUsuario = {
-        nombre: document.getElementById("nombre").value,
-        cedula: document.getElementById("cedula").value,
-        correo: document.getElementById("correo").value,
-        beca: document.getElementById("beca").value
-      };
+      // Guardar datos
+      datosUsuario = { nombre, cedula, correo, beca };
+      datosEnviados = true;
 
-      document.getElementById("modalEnvio").showModal();
+      // Insertar datos en modal
+      document.getElementById("mNombre").textContent = nombre;
+      document.getElementById("mCedula").textContent = cedula;
+      document.getElementById("mCorreo").textContent = correo;
+      document.getElementById("mBeca").textContent = beca;
+
+      modalEnvio.showModal();
+    };
+
+    document.getElementById("modalContinuarBtn").onclick = () => {
+      modalEnvio.close();
+      paso = 2;
+      cargarPaso();
+      actualizarStepper();
     };
   }
 
-  /* =======================================================
-     PASO 2 – REVISIÓN
-  ======================================================= */
-  let estadoRevision = "pendiente"; // pendiente | pausa | finalizada
+  /* ---------------------------------------------------------
+     PASO 2 — REVISIÓN
+  --------------------------------------------------------- */
+  let estadoRevision = "pendiente";
 
   function cargarPaso2() {
-    let html = "";
-
-    html += `
+    let html = `
       <div class="bg-white p-6 shadow rounded-xl mb-4">
         <h2 class="text-xl font-bold mb-2">Estado de revisión</h2>
     `;
@@ -292,23 +346,17 @@ document.addEventListener("DOMContentLoaded", () => {
         <p class="text-gray-700 mb-4">
           La solicitud está <strong>pendiente</strong> de revisión.<br>
           Tiempo estimado: ${dias} días.
-        </p>
-      `;
+        </p>`;
     }
 
     if (estadoRevision === "pausa") {
       html += `
         <p class="text-gray-700 mb-3">
-          La revisión está <strong>en pausa</strong> debido a documentación faltante:<br>
-          <strong>Documentación de bienes inmuebles</strong>.
+          La revisión está <strong>en pausa</strong>. Falta la documentación de bienes inmuebles.
         </p>
-
-        <label>Subir documento PDF faltante:</label>
+        <label>Subir PDF faltante:</label>
         <input id="archivoExtra" type="file" accept="application/pdf" class="input-utn mb-3">
-
-        <button id="btnSubirExtra" class="bg-gray-900 text-white px-4 py-2 rounded-lg">
-          Enviar y continuar revisión
-        </button>
+        <button id="btnSubirExtra" class="btn-utn btn-utn-dark">Enviar documento</button>
       `;
     }
 
@@ -317,35 +365,31 @@ document.addEventListener("DOMContentLoaded", () => {
       html += `
         <p class="text-gray-700 mb-4">
           La revisión finalizó a las <strong>${hora}</strong>.
-          Presione siguiente para ver el resultado.
-        </p>
-      `;
+        </p>`;
     }
 
-    // BOTONES DE SIMULACIÓN
     html += `
-      <div class="mt-6 flex gap-3">
-        <button id="btnSimPendiente" class="px-4 py-2 rounded bg-gray-300">Simular pendiente</button>
-        <button id="btnSimPausa" class="px-4 py-2 rounded bg-gray-300">Simular pausa</button>
-        <button id="btnSimFinal" class="px-4 py-2 rounded bg-gray-300">Simular finalizada</button>
+      <div class="mt-6 simulacion-opciones">
+        <button id="btnSimPendiente" class="btn-utn btn-utn-light">Simular pendiente</button>
+        <button id="btnSimPausa" class="btn-utn btn-utn-light">Simular pausa</button>
+        <button id="btnSimFinal" class="btn-utn btn-utn-light">Simular finalizada</button>
+      </div>
       </div>
     `;
 
-    html += `</div>`;
-
     contenedor.innerHTML = html;
 
-    // EVENTOS
+    // Eventos simulación
     document.getElementById("btnSimPendiente").onclick = () => { estadoRevision = "pendiente"; cargarPaso2(); };
     document.getElementById("btnSimPausa").onclick = () => { estadoRevision = "pausa"; cargarPaso2(); };
     document.getElementById("btnSimFinal").onclick = () => { estadoRevision = "finalizada"; cargarPaso2(); };
 
-    const extra = document.getElementById("btnSubirExtra");
-    if (extra) {
-      extra.onclick = () => {
-        const file = document.getElementById("archivoExtra").files[0];
-        if (!file || file.type !== "application/pdf") {
-          alert("El archivo debe ser PDF.");
+    // Subir extra
+    if (estadoRevision === "pausa") {
+      document.getElementById("btnSubirExtra").onclick = () => {
+        const f = document.getElementById("archivoExtra").files[0];
+        if (!f || f.type !== "application/pdf") {
+          alert("Debe subir un PDF válido.");
           return;
         }
         estadoRevision = "pendiente";
@@ -354,51 +398,52 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  /* =======================================================
-     PASO 3 – RESULTADO
-  ======================================================= */
-  let resultadoFinal = "rechazada"; // aceptada | rechazada
+  /* ---------------------------------------------------------
+     PASO 3 — RESULTADO
+  --------------------------------------------------------- */
+  let resultadoFinal = "rechazada";
 
   function cargarPaso3() {
     contenedor.innerHTML = `
       <div class="bg-white p-6 shadow rounded-xl">
         <h2 class="text-xl font-bold mb-4">Resultado de la solicitud</h2>
 
-        <p class="mb-3">
-          Estado final:
-          <strong>${resultadoFinal === "aceptada" ? "Aceptada" : "Rechazada"}</strong>
-        </p>
+        <p><strong>Estado final:</strong> ${resultadoFinal === "aceptada" ? "Aceptada" : "Rechazada"}</p>
 
         ${resultadoFinal === "rechazada"
           ? `<p class="text-red-600 font-semibold">Motivo: Documentación errónea.</p>`
-          : `<p class="text-green-700 font-semibold">La solicitud fue aceptada correctamente.</p>`
+          : `<p class="text-green-700 font-semibold">La solicitud fue aceptada.</p>`
         }
 
         <hr class="my-4">
 
-        <h3 class="font-bold mb-2">Datos del solicitante:</h3>
+        <h3 class="font-bold mb-2">Datos ingresados</h3>
         <p><strong>Nombre:</strong> ${datosUsuario.nombre}</p>
         <p><strong>Cédula:</strong> ${datosUsuario.cedula}</p>
         <p><strong>Correo:</strong> ${datosUsuario.correo}</p>
-        <p><strong>Beca solicitada:</strong> ${datosUsuario.beca}</p>
+        <p><strong>Beca:</strong> ${datosUsuario.beca}</p>
 
-        <div class="mt-6 flex gap-3">
-          <button id="btnSetAceptar" class="px-4 py-2 bg-green-600 text-white rounded">Simular Aceptada</button>
-          <button id="btnSetRechazar" class="px-4 py-2 bg-red-600 text-white rounded">Simular Rechazada</button>
+        <div class="mt-6 resultado-opciones">
+          <button id="btnSetAceptar" class="btn-utn btn-utn-green">Simular Aceptada</button>
+          <button id="btnSetRechazar" class="btn-utn btn-utn-red">Simular Rechazada</button>
         </div>
       </div>
     `;
 
-    document.getElementById("btnSetAceptar").onclick = () => {
-      resultadoFinal = "aceptada"; cargarPaso3();
-    };
-    document.getElementById("btnSetRechazar").onclick = () => {
-      resultadoFinal = "rechazada"; cargarPaso3();
-    };
+    document.getElementById("btnSetAceptar").onclick = () => { resultadoFinal = "aceptada"; cargarPaso3(); };
+    document.getElementById("btnSetRechazar").onclick = () => { resultadoFinal = "rechazada"; cargarPaso3(); };
+  }
+
+  /* CARGADOR GENERAL */
+  function cargarPaso() {
+    if (paso === 1) cargarPaso1();
+    if (paso === 2) cargarPaso2();
+    if (paso === 3) cargarPaso3();
   }
 
 });
 </script>
+
 
 
 </body>

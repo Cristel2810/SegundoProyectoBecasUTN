@@ -416,3 +416,75 @@ footer.footer {
 #stepperContainer .relative.flex {
   padding-bottom: 7rem !important;
 }
+
+/* Botones principales (Prev / Next / Enviar / Simular acción) */
+.btn-utn {
+    padding: 0.65rem 1.5rem;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.25s ease;
+    border: none;
+}
+
+/* Botón oscuro (estilo UTN) */
+.btn-utn-dark {
+    background: #0f172a;   /* slate-900 */
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.22);
+}
+.btn-utn-dark:hover {
+    background: #1e293b;
+    transform: translateY(-2px);
+}
+
+/* Botón claro */
+.btn-utn-light {
+    background: #e2e8f0;
+    color: #1e293b;
+}
+.btn-utn-light:hover {
+    background: #cbd5e1;
+}
+
+/* Botón verde para "Aceptar" */
+.btn-utn-green {
+    background: #16a34a;
+    color: white;
+}
+.btn-utn-green:hover {
+    background: #22c55e;
+}
+
+/* Botón rojo para "Rechazar" */
+.btn-utn-red {
+    background: #dc2626;
+    color: white;
+}
+.btn-utn-red:hover {
+    background: #ef4444;
+}
+
+/* Botón para subir archivos */
+.btn-utn-gray {
+    background: #f1f5f9;
+    color: #1e293b;
+    border: 1px solid #cbd5e1;
+}
+.btn-utn-gray:hover {
+    background: #e2e8f0;
+}
+
+/* Separación horizontal más amplia entre botones de simulación */
+.simulacion-opciones {
+    display: flex;
+    gap: 1.2rem !important;   /* Aumenta la separación */
+    flex-wrap: wrap;          /* Evita que se desborden en pantallas pequeñas */
+}
+
+/* Botones de resultado del paso 3 con separación */
+.resultado-opciones {
+    display: flex;
+    gap: 1.2rem !important;
+    flex-wrap: wrap;
+}
