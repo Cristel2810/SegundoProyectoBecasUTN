@@ -5,7 +5,7 @@
         "cedula": "2-0883-0934",
         "rol": "Estudiante de Ingeniería del Software",
         "foto": "img/cristel.jpg",
-        "descripcion": "Apasionada por el desarrollo web y el diseño UI/UX."
+        "descripcion": "Estudiante de Ingeniería del Software con interés en diseño web y desarrollo de interfaces claras y modernas."
     },
     {
         "nombre": "Jose Mario Cubillo Gutiérrez",
@@ -13,6 +13,6 @@
         "cedula": "1-952-0102",
         "rol": "Estudiante de Ingeniería del Software",
         "foto": "img/jose.png",
-        "descripcion": "Interesado en software educativo y accesible."
+        "descripcion": "Estudiante de Ingeniería del Software enfocado en crear soluciones prácticas y mejorar la experiencia de usuario."
     }
 ]
