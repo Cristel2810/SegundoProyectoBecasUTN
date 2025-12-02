@@ -95,36 +95,76 @@ section {
 /* ---------- Multimedia ---------- */
 
 .media-card {
-    padding: 1.5rem !important;
-    border-radius: 16px;
+    /* Tarjeta multimedia: fondo blanco y tamaño según contenido (imagen) */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.6rem;
+    border-radius: 12px;
     margin-bottom: 1rem;
     background: #ffffff;
     border: 1px solid #e5e7eb;
     box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-    overflow: hidden;
 }
 
-.media-card .media-placeholder {
-    min-height: 110px; 
-    max-height: 160px;
-    border-radius: 12px;
-    padding: 2rem;
-    box-sizing: border-box;
+/* Imagen dentro de la tarjeta: la tarjeta se ajusta al tamaño de la imagen */
+.media-card .media-image,
+.media-image {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    margin: 0 auto;
+    border-radius: 8px;
 }
 
-.media-placeholder {
-    min-height: 150px;
-    max-height: 140px;
-    width: 100%;
-    border-radius: 12px;
-    border: 1px dashed #cbd5e1;
-    background: #f8fafc;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1.5rem;
-    box-sizing: border-box;
-    text-align: center;
+/* Valores grandes para mostrar imágenes más grandes por defecto */
+.media-image { max-height: 720px; }
+
+@media (max-width: 1366px) {
+    .media-image { max-height: 640px; }
+}
+
+@media (max-width: 1024px) {
+    .media-image { max-height: 560px; }
+}
+
+@media (max-width: 768px) {
+    .media-image { max-height: 440px; }
+}
+
+@media (max-width: 420px) {
+    .media-image { max-height: 320px; }
+    .media-card { padding: 0.3rem; }
+}
+
+/* -----------------------------
+   Imágenes dentro de las tarjetas multimedia
+   - Centrar y ajustar márgenes según tamaño
+   - Limitar la altura máxima por breakpoint para mantener proporciones
+   ----------------------------- */
+.media-placeholder img {
+    display: block;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    max-height: 320px; /* límite en pantallas grandes */
+    object-fit: contain;
+    margin: 0 auto;
+    border-radius: 8px;
+}
+
+@media (max-width: 1024px) {
+    .media-placeholder img { max-height: 260px; }
+}
+
+@media (max-width: 768px) {
+    .media-placeholder img { max-height: 200px; }
+}
+
+@media (max-width: 420px) {
+    .media-placeholder img { max-height: 150px; }
 }
 
 
@@ -488,3 +528,51 @@ footer.footer {
     gap: 1.2rem !important;
     flex-wrap: wrap;
 }
+
+/* -----------------------------
+   Responsive improvements
+   ----------------------------- */
+@media (max-width: 1024px) {
+    /* Reduce horizontal padding so cards fit on tablets */
+    main.container { padding-left: 1rem; padding-right: 1rem; }
+    #stepperContainer { padding-left: 1.25rem; padding-right: 1.25rem; }
+    #contenedorPasos > div { padding: 1.25rem 1rem; }
+}
+
+@media (max-width: 768px) {
+    /* Stack controls and make big hit areas */
+    .step-box { flex-direction: column; align-items: stretch; gap: .75rem; }
+
+    /* Make stepper labels less intrusive */
+    #stepperContainer .step-label { display: none; }
+
+    /* Make line and circles adapt */
+    #stepperContainer .relative.flex { padding-bottom: 4rem !important; }
+    #stepperContainer .rounded-full { width: 42px !important; height: 42px !important; }
+
+    /* Form / content area fits narrower screens */
+    .bg-white.rounded-2xl.shadow-md.p-8 { padding: 1.25rem; margin-top: 1rem; }
+
+    /* Buttons stack vertically and use full width */
+    .btn-utn { width: 100%; display: block; }
+    .btn-utn + .btn-utn { margin-top: .6rem; }
+
+    /* ContenedorPasos spacing */
+    #contenedorPasos { margin-top: 1.5rem !important; }
+
+    /* Modal sizing for small screens */
+    dialog.modal { width: calc(100% - 2rem); max-width: 520px; padding: 0; }
+    .modal-box { padding: 1rem; border-radius: 12px; }
+
+    /* Multimedia placeholders adapt */
+    .media-card .media-placeholder, .media-placeholder { padding: 1rem; min-height: 100px; }
+}
+
+@media (max-width: 420px) {
+    /* Very small phones: reduce paddings and font sizes slightly */
+    main.container { padding-top: 1rem; }
+    .progress-label { font-size: .85rem; }
+    .step-circle, .step-circle.active { width: 44px !important; height: 44px !important; font-size: .95rem; }
+    #lineProgress { height: 3px !important; }
+}
+

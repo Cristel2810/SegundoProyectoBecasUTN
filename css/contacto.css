@@ -74,88 +74,59 @@
     min-height: auto;
 }
 
-#hs-grayscale-leaflet {
-    height: 300px !important;
-    width: 100%;
+/* ==================================================
+    CSS reorganizado para la página de contacto
+    Agrupado por secciones y con comentarios en español
+    ================================================== */
+
+/* -----------------------------
+    Mapa (Leaflet) - tamaño por defecto
+    ----------------------------- */
+#hs-grayscale-leaflet { height: 300px !important; width:100%; border-radius:20px; overflow:hidden; }
+
+/* -----------------------------
+   Formulario de contacto
+   ----------------------------- */
+#contactForm > div { margin-bottom: 1rem; }
+#contactForm input, #contactForm textarea { border:1px solid #cbd5e1; padding:10px 14px; border-radius:10px; font-size:1rem; width:100%; transition:.2s ease; }
+#contactForm input:focus, #contactForm textarea:focus { border-color: var(--utn-azul-oscuro); box-shadow:0 0 0 3px rgba(5,80,150,0.2); outline:none; }
+#contactForm label { display:block; margin-bottom:4px; }
+
+.form-card { padding:1.5rem; border-radius:16px; background:white; box-shadow:0 4px 14px rgba(0,0,0,0.08); }
+.form-card h2 { margin-bottom: .8rem; }
+
+/* -----------------------------
+   Captcha
+   ----------------------------- */
+.captcha-box { padding:1rem; background:#f1f5f9; border-radius:12px; border:1px solid #cbd5e1; }
+#captchaTable { margin-bottom:12px; display:flex; gap:.5rem; flex-wrap:wrap; justify-content:center; }
+#captchaTable div { border:1px solid #545757 !important; border-radius:6px; padding:6px 8px; min-width:36px; min-height:36px; display:flex; align-items:center; justify-content:center; }
+#refreshButton { border-radius:8px; padding:6px 12px; }
+#resultMessage { font-weight:600; margin-top:8px; }
+
+/* -----------------------------
+   Responsive adjustments
+   ----------------------------- */
+@media (max-width: 900px) {
+    /* For layouts that use a 2-column grid: for <900px stack vertically */
+    .grid.gap-10.grid-cols-1.md\:grid-cols-2 { grid-template-columns: 1fr; }
+    .form-card, .info-card { padding:1.25rem; }
+    #hs-grayscale-leaflet { height:260px !important; }
 }
 
-/* Espaciado general entre los campos */
-#contactForm > div {
-    margin-bottom: 1rem;
+@media (max-width: 640px) {
+    #contactForm input, #contactForm textarea { padding:10px 12px; font-size:.95rem; }
+    #captchaTable { gap:.4rem; }
+    #captchaTable div { padding:6px 8px; min-width:34px; min-height:34px; font-size:1.05rem; }
+    #refreshButton { padding:8px 10px; }
+    #modal .modal-box { width: calc(100% - 2rem); max-width:480px; padding:1rem; }
+    #hs-grayscale-leaflet { height:220px !important; }
 }
 
-/* Inputs y textarea */
-#contactForm input,
-#contactForm textarea {
-    border: 1px solid #cbd5e1; /* slate-300 */
-    padding: 10px 14px;
-    border-radius: 10px;
-    font-size: 1rem;
-    width: 100%;
-    transition: 0.2s ease;
-}
-
-/* Focus de validaciones */
-#contactForm input:focus,
-#contactForm textarea:focus {
-    border-color: var(--utn-azul-oscuro);
-    box-shadow: 0 0 0 3px rgba(5, 80, 150, 0.2);
-    outline: none;
-}
-
-/* Tarjeta del formulario */
-.form-card {
-    padding: 2rem;
-    border-radius: 20px;
-    background: white;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
-}
-
-.form-card h2 {
-    margin-bottom: 1rem;
-}
-
-#contactForm label {
-    display: block;
-    margin-bottom: 4px;
-}
-
-/* Captcha */
-.captcha-box {
-    padding: 1rem;
-    background: #f1f5f9;
-    border-radius: 12px;
-    border: 1px solid #cbd5e1;
-}
-
-#captchaTable {
-    margin-bottom: 12px;
-}
-
-/* Bordes de las letras y números*/
-#captchaTable div {
-    border: 1px solid #545757 !important;
-    border-radius: 6px;
-    padding: 6px;
-}
-
-/* Botón del captcha */
-#refreshButton {
-    border-radius: 8px;
-    padding: 6px 12px;
-}
-
-/* Mensaje de captcha */
-#resultMessage {
-    font-weight: 600;
-    margin-top: 8px;
-}
-
-/* Mapa */
-#hs-grayscale-leaflet {
-    height: 300px !important;
-    border-radius: 20px;
-    overflow: hidden;
+@media (max-width: 420px) {
+    .form-card, .info-card { padding:.9rem; }
+    #contactForm label { font-size:.95rem; }
+    #confirmMessage { font-size:.9rem; }
 }
 
 /* Tarjeta de información */
@@ -195,3 +166,4 @@
         transform: translateY(0);
     }
 } */
+ 
