@@ -1,8 +1,24 @@
 document.addEventListener("DOMContentLoaded", () => {
     const contenedor = document.getElementById("autoresContainer");
-    const btnResaltar = document.getElementById("btnResaltarAutores");
+    let btnResaltar = document.getElementById("btnResaltarAutores");
 
     if (!contenedor) return;
+
+    // 🔹 Si el botón NO existe en el HTML, lo creamos desde JS
+    if (!btnResaltar) {
+        const wrapper = document.createElement("div");
+        wrapper.className = "flex justify-center my-4";
+
+        btnResaltar = document.createElement("button");
+        btnResaltar.id = "btnResaltarAutores";
+        btnResaltar.textContent = "Resaltar autores";
+        btnResaltar.className = "btn-utn-secondary text-xs px-4 py-2 bg-[var(--utn-naranja)] text-slate-900 rounded-full";
+
+        wrapper.appendChild(btnResaltar);
+
+        // lo insertamos justo antes de las tarjetas de autores
+        contenedor.parentNode.insertBefore(wrapper, contenedor);
+    }
 
     // 1. Cargar autores desde JSON
     fetch("data/autores.json")
