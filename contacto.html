@@ -8,8 +8,12 @@
     <link rel="stylesheet" href="css/tailwind.css" />
     <link rel="stylesheet" href="css/custom.css" />
     <link rel="stylesheet" href="css/contacto.css" />
+
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+    <!-- Google reCAPTCHA -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 
 <body>
@@ -48,57 +52,42 @@
                 <div class="form-card">
 
                     <h2 class="text-xl font-semibold text-[var(--utn-azul-oscuro)]">Formulario de contacto</h2>
-                    <form id="contactForm" class="space-y-4">
+                    <form id="contactForm"
+                        action="https://formspree.io/f/xblnkrzz"
+                        method="POST"
+                        class="space-y-4">
+
+                        <input type="hidden" name="_subject" value="Nuevo mensaje desde el Portal UTN">
 
                         <div>
                             <label for="nombre" class="font-semibold text-sm">Nombre:</label>
-                            <input id="nombre" type="text" class="w-full border rounded-lg p-2 text-sm" placeholder="Tu nombre" required>
+                            <input id="nombre" name="name" type="text" class="w-full border rounded-lg p-2 text-sm"
+                                placeholder="Tu nombre" required>
                         </div>
 
                         <div>
                             <label for="correo" class="font-semibold text-sm">Correo electrónico:</label>
-                            <input id="correo" type="email" class="w-full border rounded-lg p-2 text-sm" placeholder="correo@ejemplo.com" required>
+                            <input id="correo" name="email" type="email" class="w-full border rounded-lg p-2 text-sm"
+                                placeholder="correo@ejemplo.com" required>
                         </div>
 
                         <div>
                             <label for="asunto" class="font-semibold text-sm">Asunto:</label>
-                            <input id="asunto" type="text" class="w-full border rounded-lg p-2 text-sm" placeholder="Motivo del mensaje" required>
+                            <input id="asunto" name="subject" type="text" class="w-full border rounded-lg p-2 text-sm"
+                                placeholder="Motivo del mensaje" required>
                         </div>
 
                         <div>
                             <label for="mensaje" class="font-semibold text-sm">Mensaje:</label>
-                            <textarea id="mensaje" rows="4" class="w-full border rounded-lg p-2 text-sm" placeholder="Escribe tu mensaje aquí..." required></textarea>
+                            <textarea id="mensaje" name="message" rows="4"
+                                class="w-full border rounded-lg p-2 text-sm"
+                                placeholder="Escribe tu mensaje aquí..." required></textarea>
                         </div>
 
-                        
+                        <!-- Google RECAPTCHA -->
+                        <div class="g-recaptcha" data-sitekey="6Le4iiAsAAAAAPYgsv46UvhKq_5ykwYn_o8N4iD5"></div>
 
-                        <!-- Captcha -->
-                        <div class="captcha-box">
-
-
-                            <h3 class="text-lg font-semibold text-center mb-4">Captcha</h3>
-
-                            <!-- Contenedor del captcha -->
-                            <div id="captchaTable" class="flex justify-center items-center space-x-2 mb-4">
-                            </div>
-
-                            <!-- Input + refrescar -->
-                            <div class="flex items-center space-x-3 mb-4">
-                                <input type="text" id="captchaInput" class="border border-gray-300 rounded-md py-2 px-3 focus:outline-none flex-1"
-                                placeholder="Ingresa el código" required>
-
-                                <button id="refreshButton"
-                                        type="button"
-                                        class="bg-blue-600 text-white px-4 py-2 rounded-md">
-                                    Refresh
-                                </button>
-                            </div>
-
-                            <p id="resultMessage" class="text-sm"></p>
-
-                        </div>
-
-                        <button type="submit"
+                        <button id="submitBtn" type="submit"
                                 class="btn-utn-primary w-full text-center font-semibold">
                             Enviar mensaje
                         </button>
@@ -107,22 +96,7 @@
                             ¡Tu mensaje se envió correctamente!
                         </p>
 
-                        <!-- Modal (para datos enviados en el formulario) -->
-                        <div id="modal" class="hidden col-span-1 w-full">
-                            <div class="bg-white shadow-md rounded-2xl p-6 mt-6">
-                                <h2 class="text-xl font-bold text-[var(--utn-azul-oscuro)] mb-4">Datos enviados</h2>
-                                <div id="modalContent" class="text-sm text-slate-700 space-y-1"></div>
-                            </div>
-                        </div>
                     </form>
-                </div>
-
-                <!-- Modal (para datos enviados en el formulario) -->
-                <div id="modal" class="hidden col-span-1 w-full">
-                    <div class="bg-white shadow-md rounded-2xl p-6 mt-6">
-                        <h2 class="text-xl font-bold text-[var(--utn-azul-oscuro)] mb-4">Datos enviados</h2>
-                        <div id="modalContent" class="text-sm text-slate-700 space-y-1"></div>
-                    </div>
                 </div>
 
                 <!-- Información -->
@@ -149,111 +123,119 @@
         </div>
     </footer>
 
-    
 
-    <!-- Validaciones -->
+    <!-- VALIDACIÓN Y ENVÍO -->
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            
-            /* Captcha */
-            const captchaTable = document.getElementById('captchaTable');
-            const captchaInput = document.getElementById('captchaInput');
-            const refreshButton = document.getElementById('refreshButton');
-            const resultMessage = document.getElementById('resultMessage');
+document.getElementById("contactForm").addEventListener("submit", async function(e) {
+    e.preventDefault();
 
-            generateCaptchaTable();
+    const submitBtn = document.getElementById("submitBtn");
+    const confirmMessage = document.getElementById("confirmMessage");
+    const modalContent = document.getElementById("modalContent");
 
-            refreshButton.addEventListener('click', function () {
-                generateCaptchaTable();
-                resultMessage.textContent = '';
-            });
+    // obtener token de reCAPTCHA
+    const token = grecaptcha.getResponse();
+    if (!token) {
+        alert("Por favor completa el reCAPTCHA.");
+        return;
+    }
 
-            function generateRandomString(length) {
-                const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-                let result = "";
-                for (let i = 0; i < length; i++) {
-                    result += chars.charAt(Math.floor(Math.random() * chars.length));
-                }
-                return result;
-            }
+    submitBtn.textContent = "Enviando...";
+    submitBtn.disabled = true;
 
-            function generateCaptchaTable() {
-                const captchaText = generateRandomString(6);
-                captchaTable.dataset.captcha = captchaText;
-                captchaTable.innerHTML = "";
+    const formData = new FormData();
+    formData.append("name", document.getElementById("nombre").value);
+    formData.append("email", document.getElementById("correo").value);
+    formData.append("subject", document.getElementById("asunto").value);
+    formData.append("message", document.getElementById("mensaje").value);
 
-                for (let i = 0; i < captchaText.length; i++) {
-                    const cell = document.createElement("div");
-                    cell.textContent = captchaText.charAt(i);
-                    cell.classList.add(
-                        "text-2xl", "font-bold", "w-10", "h-10",
-                        "text-center", "border", "border-gray-300", "rounded"
-                    );
-                    captchaTable.appendChild(cell);
-                }
-            }
+    // Formspree recaptcha field
+    formData.append("g-recaptcha-response", token);
 
-            /* Modal + Form */
-            const form = document.getElementById("contactForm");
-            const modal = document.getElementById("modal");
-            const modalContent = document.getElementById("modalContent");
-            const confirmMessage = document.getElementById("confirmMessage");
-
-            form.addEventListener("submit", (e) => {
-                e.preventDefault();
-
-                const nombre = document.getElementById("nombre").value.trim();
-                const correo = document.getElementById("correo").value.trim();
-                const asunto = document.getElementById("asunto").value.trim();
-                const mensaje = document.getElementById("mensaje").value.trim();
-
-                modalContent.innerHTML = `
-                    <p><strong>Nombre:</strong> ${nombre}</p>
-                    <p><strong>Correo:</strong> ${correo}</p>
-                    <p><strong>Asunto:</strong> ${asunto}</p>
-                    <p><strong>Mensaje:</strong> ${mensaje}</p>
-                `;
-
-                modal.classList.remove("hidden");
-
-                confirmMessage.classList.remove("hidden");
-                setTimeout(() => {
-                    confirmMessage.classList.add("hidden");
-                }, 3000);
-            });
-
-            
+    try {
+        const res = await fetch("https://formspree.io/f/xblnkrzz", {
+            method: "POST",
+            headers: { "Accept": "application/json" },
+            body: formData
         });
-    </script>
 
+        const data = await res.json();
+        console.log("Formspree response:", data);
+
+        if (res.ok && data.ok) {
+
+            modalContent.innerHTML = `
+                <p><strong>Nombre:</strong> ${formData.get("name")}</p>
+                <p><strong>Correo:</strong> ${formData.get("email")}</p>
+                <p><strong>Asunto:</strong> ${formData.get("subject")}</p>
+                <p><strong>Mensaje:</strong> ${formData.get("message")}</p>
+            `;
+
+            document.getElementById("my_modal_1").showModal();
+
+            confirmMessage.classList.remove("hidden");
+            setTimeout(() => confirmMessage.classList.add("hidden"), 3000);
+
+            document.getElementById("contactForm").reset();
+            grecaptcha.reset();
+
+        } else {
+            alert("Error: " + (data.error ?? "Error al enviar el formulario"));
+            console.error("Formspree error:", data);
+        }
+
+    } catch (err) {
+        alert("Error de conexión.");
+        console.error(err);
+    }
+
+    submitBtn.textContent = "Enviar mensaje";
+    submitBtn.disabled = false;
+});
+</script>
 
     <!-- Script Mapa -->
     <script>
         window.addEventListener('load', () => {
-        (function () {
             const map = L.map('hs-grayscale-leaflet', {
-            center: [10.00710650559122, -84.21645643816866], // UTN Sede Central EXACTA
-            zoom: 17,
-            maxBounds: [
-                [9, -85],
-                [11, -83]
-            ],
-            maxBoundsViscosity: 1.0
+                center: [10.00710650559122, -84.21645643816866],
+                zoom: 17,
+                maxBounds: [
+                    [9, -85],
+                    [11, -83]
+                ],
+                maxBoundsViscosity: 1.0
             });
 
             L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-            maxZoom: 19,
-            minZoom: 2,
-            attribution: '© <a href="https://carto.com/attributions">CARTO</a>'
+                maxZoom: 19,
+                minZoom: 2,
+                attribution: '© CARTO'
             }).addTo(map);
 
-            // Marcador en la ubicación exacta
             L.marker([10.00710650559122, -84.21645643816866])
-            .bindPopup('Universidad Técnica Nacional - Sede Central<br>Acequia Grande, Alajuela')
-            .addTo(map);
-        })();
-    });
+                .bindPopup('Universidad Técnica Nacional - Sede Central<br>Acequia Grande, Alajuela')
+                .addTo(map);
+        });
     </script>
+
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+
+    <!-- NUEVO MODAL (DaisyUI) -->
+    <dialog id="my_modal_1" class="modal">
+      <div class="modal-box">
+        <h3 class="text-lg font-bold mb-4">Datos enviados</h3>
+
+        <div id="modalContent" class="space-y-2 mb-4"></div>
+
+        <div class="modal-action">
+          <form method="dialog">
+            <button class="btn btn-primary">Cerrar</button>
+          </form>
+        </div>
+      </div>
+    </dialog>
+
 </body>
 </html>
