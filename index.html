@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <title>Portal de Becas UTN - Inicio</title>
     <!-- para hacerlo responsivo  -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Tailwind  -->
     <link rel="stylesheet" href="css/tailwind.css" />
     <!-- Estilos  -->
@@ -18,10 +18,8 @@
         <nav class="utn-navbar">
             <div class="container nav-inner">
                 <a href="index.html" class="nav-brand">
-
                     <img src="img/logo2.webp" alt="Logo UTN" class="logo-utn">
                     <span>Portal de Becas</span>
-                    
                 </a>
 
                 <ul class="nav-links">
@@ -39,13 +37,13 @@
         <div class="hero-carousel">
 
             <!-- Slide 1 -->
-            <article class="hero-slide hero-slide--active" data-index="0"
-                style="background-image: url('img/p3.avif');">
+            <article class="hero-slide hero-slide--active" data-index="0" style="background-image: url('img/p3.avif');">
                 <div class="hero-overlay"></div>
                 <div class="hero-content">
                     <p class="hero-kicker">Convocatoria 2026</p>
                     <h1 class="hero-title">Solicitud de Beca <span>Socioeconómica</span></h1>
-                    <p class="hero-text">Consultá fechas, requisitos y el estado de tu solicitud desde un único portal.
+                    <p class="hero-text">
+                        Consultá fechas, requisitos y el estado de tu solicitud desde un único portal.
                     </p>
                     <div class="hero-actions">
                         <button id="btnVerPropuesta" class="btn-utn-primary">Ver cómo funciona</button>
@@ -60,8 +58,10 @@
                 <div class="hero-content">
                     <p class="hero-kicker">Renovación de beca</p>
                     <h1 class="hero-title">No pierdas tu <span>beneficio</span> por fechas.</h1>
-                    <p class="hero-text">El portal recuerda las fechas de renovación y muestra qué documentos te hacen
-                        falta.</p>
+                    <p class="hero-text">
+                        El portal recuerda las fechas de renovación y muestra qué documentos te hacen
+                        falta.
+                    </p>
                     <div class="hero-actions">
                         <button class="btn-utn-secondary">Ver problemática</button>
                     </div>
@@ -74,7 +74,8 @@
                 <div class="hero-content">
                     <p class="hero-kicker">Transparencia</p>
                     <h1 class="hero-title">Visualizá el <span>estado</span> de tu beca.</h1>
-                    <p class="hero-text">Simulación del avance del trámite y alertas cuando existe riesgo de perder la
+                    <p class="hero-text">
+                        Simulación del avance del trámite y alertas cuando existe riesgo de perder la
                         beca.
                     </p>
                     <div class="hero-actions">
@@ -97,42 +98,130 @@
         </div>
     </section>
 
-    <!-- INTRO: Problema / Propuesta -->
-    <section id="intro" class="section">
-        <div class="container intro-grid">
-            <div class="intro-main">
-                <h2 class="section-title">Portal de Becas UTN</h2>
-                <p class="section-text">
-                    Esta plataforma permite centralizar información dispersa y visualizar el estado de becas UTN
-                    de manera clara y moderna.
+    <!-- SECCIÓN GUIA DE BECAS (ESTILO HERO TRÁMITES) -->
+    <section id="intro" class="section section-becas-hero">
+        <div class="container becas-hero-inner reveal-on-scroll">
+            <div class="becas-hero-content">
+                <h2 class="becas-hero-title">
+                    Guía de becas <span>UTN</span>
+                </h2>
+                <p class="becas-hero-lead">
+                    Avanzamos hacia una visualización más clara de los procesos de beca:
+                    solicitud, renovación y mantenimiento del beneficio.
                 </p>
+                <p class="becas-hero-text">
+                    Desde este portal se busca concentrar la información principal y simular
+                    el estado aproximado de una beca, para que la persona estudiante tome
+                    decisiones informadas a tiempo.
+                </p>
+                <a href="propuesta.html" class="btn-becas-hero">
+                    Acceder a la propuesta
+                </a>
             </div>
 
-            <div class="intro-cards">
-                <article class="intro-card">
-                    <h3 class="intro-card-title">Problema</h3>
-                    <p class="intro-card-text">
-                        Procesos de beca poco claros, información repartida en correos y afiches, y fechas que se
-                        olvidan
-                        fácilmente.
-                    </p>
-                </article>
-
-                <article class="intro-card">
-                    <h3 class="intro-card-title">Propuesta</h3>
-                    <p class="intro-card-text">
-                        Un portal centralizado, visual y dinámico que muestre el estado del trámite y los riesgos
-                        de perder la beca.
-                    </p>
-                </article>
+            <div class="becas-hero-figure">
+                <div class="becas-hero-blob becas-hero-blob--pink"></div>
+                <div class="becas-hero-blob becas-hero-blob--blue"></div>
+                <div class="becas-hero-image-wrapper">
+                    <img src="img/inicioop.jpg" alt="Atención de becas UTN" class="becas-hero-image">
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- SECCIÓN TIPOS DE BECA (TARJETAS + PANEL DETALLE) -->
+    <section id="becas-tipos" class="section section-becas-tipos">
+        <div class="container">
+            <header class="becas-tipos-header">
+                <h2 class="section-title">Guía de tipos de beca</h2>
+                <p class="section-subtitle">
+                    Seleccioná una tarjeta para conocer, de forma resumida, el objetivo y
+                    los aspectos básicos de cada tipo de beca que podría ofrecer una institución
+                    como la UTN.
+                </p>
+            </header>
+
+        <div class="becas-tipos-layout reveal-on-scroll" data-reveal-delay="0.05s">
+                <div class="becas-tipos-grid">
+                    <article class="beca-card">
+                        <button type="button" class="beca-card-main" data-beca="socioeconomica">
+                            <span class="beca-card-arrow">➜</span>
+                            <div class="beca-card-body">
+                                <h3>Beca socioeconómica</h3>
+                                <p>Dirigida a personas estudiantes con condición socioeconómica vulnerable.</p>
+                            </div>
+                        </button>
+                    </article>
+
+                    <article class="beca-card">
+                        <button type="button" class="beca-card-main" data-beca="academica">
+                            <span class="beca-card-arrow">➜</span>
+                            <div class="beca-card-body">
+                                <h3>Beca estímulo académico</h3>
+                                <p>Reconoce un rendimiento académico sobresaliente y la permanencia en el plan de
+                                    estudio.</p>
+                            </div>
+                        </button>
+                    </article>
+
+                    <article class="beca-card">
+                        <button type="button" class="beca-card-main" data-beca="cultural">
+                            <span class="beca-card-arrow">➜</span>
+                            <div class="beca-card-body">
+                                <h3>Beca cultural y deportiva</h3>
+                                <p>Apoya la representación de la institución en actividades culturales o deportivas.</p>
+                            </div>
+                        </button>
+                    </article>
+
+                    <article class="beca-card">
+                        <button type="button" class="beca-card-main" data-beca="residencia">
+                            <span class="beca-card-arrow">➜</span>
+                            <div class="beca-card-body">
+                                <h3>Beca de residencia</h3>
+                                <p>Considera a quienes deben desplazarse desde zonas alejadas para poder estudiar.</p>
+                            </div>
+                        </button>
+                    </article>
+
+                    <article class="beca-card">
+                        <button type="button" class="beca-card-main" data-beca="discapacidad">
+                            <span class="beca-card-arrow">➜</span>
+                            <div class="beca-card-body">
+                                <h3>Beca para apoyo a la discapacidad</h3>
+                                <p>Contempla apoyos específicos asociados a una condición de discapacidad.</p>
+                            </div>
+                        </button>
+                    </article>
+
+                    <article class="beca-card">
+                        <button type="button" class="beca-card-main" data-beca="alimentacion">
+                            <span class="beca-card-arrow">➜</span>
+                            <div class="beca-card-body">
+                                <h3>Apoyo en alimentación</h3>
+                                <p>Busca contribuir con la permanencia otorgando apoyo en alimentación estudiantil.</p>
+                            </div>
+                        </button>
+                    </article>
+                </div>
+
+                <aside id="becaDetalle" class="beca-detail beca-detail--empty">
+                    <h3 id="becaDetalleTitulo">Seleccioná un tipo de beca</h3>
+                    <p id="becaDetalleTexto">
+                        Al hacer clic en la flecha de cada tarjeta se mostrará aquí un resumen
+                        de los aspectos más relevantes de ese tipo de beca.
+                    </p>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <!-- CARDS DINÁMICAS JSON (SIN TOCAR) -->
     <!-- CARDS DINÁMICAS JSON -->
     <section id="cards-json" class="section section-gray">
         <div class="container">
-            <div class="section-header">
+        <div class="section-header reveal-on-scroll" data-reveal-delay="0.15s">
+
                 <div>
                     <h2 class="section-title">Información dinámica</h2>
                     <p class="section-subtitle">
@@ -147,7 +236,8 @@
                 </div>
             </div>
 
-            <div id="cardsContainer" class="cards-grid">
+           <div id="cardsContainer" class="cards-grid reveal-on-scroll" data-reveal-delay="0.2s">
+
                 <!-- JS inserta las tarjetas aquí -->
             </div>
         </div>

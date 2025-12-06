@@ -34,39 +34,65 @@
     <main class="section bg-slate-50">
         <div class="container space-y-14">
 
-            <!--  SECCIÓN SUPERIOR -->
-            <section class="text-center py-8">
-                <h1 class="text-3xl font-bold text-[var(--utn-azul-oscuro)]">Sobre este proyecto</h1>
+            <!--  SECCIÓN SUPERIOR: TEXTO + FICHA -->
+            <section class="acerca-layout">
+                <!-- Texto del proyecto -->
+                <div class="acerca-text">
+                    <h1 class="text-3xl font-bold text-[var(--utn-azul-oscuro)] mb-3">
+                        Sobre este proyecto
+                    </h1>
 
-                <p class="text-slate-600 max-w-xl mx-auto mt-2">
-                    Un prototipo académico que reúne información de becas UTN en un solo lugar,
-                    diseñado para que las personas estudiantes consulten requisitos, fechas y estados de manera clara.
-                </p>
+                    <p class="text-slate-600 text-sm md:text-base mb-3">
+                        El Portal de Becas UTN es un prototipo académico que busca reunir en un solo espacio
+                        la información clave de las becas: convocatorias, renovaciones y estado aproximado
+                        del beneficio.
+                    </p>
 
-                <!-- CARD  INSTITUCIONAL -->
-                <div class="mt-6 bg-white shadow-md rounded-2xl p-6 w-full max-w-md mx-auto">
-                    <h3 class="text-lg font-semibold text-[var(--utn-azul-oscuro)] mb-2">Ficha del proyecto</h3>
-                    <p><strong>Curso:</strong> ISW-512 Diseño de Aplicaciones Web – UTN</p>
-                    <p><strong>Profesora:</strong> Nathalie Paniagua López</p>
-                    <p><strong>Tecnologías:</strong> HTML, Tailwind, JavaScript, JSON</p>
+                    <p class="text-slate-600 text-sm md:text-base">
+                        El objetivo principal es presentar los procesos de beca de forma más visual y entendible,
+                        para que la persona estudiante tome decisiones informadas sin reemplazar los canales
+                        oficiales de la institución.
+                    </p>
                 </div>
+
+                <!-- Ficha del proyecto -->
+                <aside class="acerca-card">
+                    <h2 class="acerca-card-title">Ficha del proyecto</h2>
+
+                    <ul class="acerca-card-list">
+                        <li class="acerca-card-item">
+                            <span class="acerca-label">Nombre:</span>
+                            <span class="acerca-value">Portal de Becas UTN</span>
+                        </li>
+                        <li class="acerca-card-item">
+                            <span class="acerca-label">Curso:</span>
+                            <span class="acerca-value">ISW-512 · Diseño de Aplicaciones Web</span>
+                        </li>
+                        <li class="acerca-card-item">
+                            <span class="acerca-label">Profesora:</span>
+                            <span class="acerca-value">Nathalie Paniagua López</span>
+                        </li>
+                        <li class="acerca-card-item">
+                            <span class="acerca-label">Cuatrimestre:</span>
+                            <span class="acerca-value">I Ciclo 2025</span>
+                        </li>
+                        <li class="acerca-card-item">
+                            <span class="acerca-label">Tecnologías:</span>
+                            <span class="acerca-value">HTML, Tailwind CSS, JavaScript, JSON</span>
+                        </li>
+                    </ul>
+                </aside>
             </section>
 
-        <!--  AUTORES -->
-        <section class="space-y-4">
-            <div class="text-center space-y-1">
-                <h2 class="text-xl font-bold text-[var(--utn-azul-oscuro)]">Autores</h2>
-            </div>
-        
-            <div class="flex justify-center">
-                <button id="btnResaltarAutores" class="btn-utn-primary text-xs px-4 py-2">
-                    Resaltar autores
-                </button>
-            </div>
-        
-            <!-- Cards generadas por JS -->
-            <div id="autoresContainer" class="autores-grid"></div>
-        </section>
+            <!--  AUTORES -->
+            <section class="space-y-4">
+                <div class="text-center space-y-1">
+                    <h2 class="text-xl font-bold text-[var(--utn-azul-oscuro)]">Autores</h2>
+                </div>
+
+                <!-- Cards generadas por JS -->
+                <div id="autoresContainer" class="autores-grid"></div>
+            </section>
 
             <!-- FOOTER TEXT -->
             <section class="text-center text-slate-600 text-sm pt-4">

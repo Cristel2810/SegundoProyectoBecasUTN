@@ -186,3 +186,103 @@ function initHomeCards() {
     btnScrollProblema2?.addEventListener("click", scrollSuaveIntro);
 }
 
+// =============================
+// Tipos de beca - panel detalle
+// =============================
+document.addEventListener("DOMContentLoaded", function () {
+    const detail = document.getElementById("becaDetalle");
+    const titleEl = document.getElementById("becaDetalleTitulo");
+    const textEl = document.getElementById("becaDetalleTexto");
+    if (!detail || !titleEl || !textEl) return;
+
+    const infoBecas = {
+        socioeconomica: {
+            titulo: "Beca socioeconómica",
+            texto: "Orienta sus recursos a personas estudiantes cuya situación económica podría limitar la permanencia en la universidad. Suele considerar estudio socioeconómico, documentación de ingresos del hogar y matrícula en al menos la carga mínima permitida."
+        },
+        academica: {
+            titulo: "Beca estímulo académico",
+            texto: "Reconoce el rendimiento académico sobresaliente. Generalmente exige un promedio ponderado alto, aprobación de la mayoría de los cursos matriculados y permanencia regular en el plan de estudios."
+        },
+        cultural: {
+            titulo: "Beca cultural y deportiva",
+            texto: "Brinda apoyo a quienes representan a la institución en grupos culturales, artísticos o selecciones deportivas. Puede contemplar ayudas en matrícula o montos de apoyo mientras se mantenga la representación activa."
+        },
+        residencia: {
+            titulo: "Beca de residencia",
+            texto: "Pensada para personas estudiantes que deben desplazarse desde otras comunidades para asistir a lecciones. Suele tomar en cuenta la distancia al centro de estudios y la ausencia de oferta educativa similar en su zona."
+        },
+        discapacidad: {
+            titulo: "Beca para apoyo a la discapacidad",
+            texto: "Considera la condición de discapacidad de la persona estudiante e intenta facilitar su permanencia con apoyos específicos, según criterios definidos por la universidad y su normativa de inclusión."
+        },
+        alimentacion: {
+            titulo: "Apoyo en alimentación",
+            texto: "Busca colaborar con la permanencia estudiantil por medio de subsidios o acceso a comedores institucionales, priorizando situaciones socioeconómicas más vulnerables."
+        }
+    };
+
+    const cards = document.querySelectorAll(".beca-card-main");
+    cards.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+            const key = btn.dataset.beca;
+            const info = infoBecas[key];
+            if (!info) return;
+
+            // Actualizar textos
+            titleEl.textContent = info.titulo;
+            textEl.textContent = info.texto;
+            detail.classList.remove("beca-detail--empty");
+
+            // Marcar tarjeta activa
+            document.querySelectorAll(".beca-card").forEach(function (card) {
+                card.classList.remove("beca-card--active");
+            });
+            btn.closest(".beca-card").classList.add("beca-card--active");
+
+            // Scroll suave al panel en pantallas pequeñas
+            if (window.innerWidth < 900) {
+                detail.scrollIntoView({ behavior: "smooth", block: "start" });
+            }
+        });
+    });
+});
+// ========================================
+// Animación: revelar secciones al hacer scroll
+// ========================================
+document.addEventListener("DOMContentLoaded", function () {
+    const elements = document.querySelectorAll(".reveal-on-scroll");
+    if (elements.length === 0) return;
+
+    function mostrarElemento(el) {
+        const delay = el.dataset.revealDelay || "0s";
+        el.style.transitionDelay = delay;
+        el.classList.add("is-visible");
+    }
+
+    if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver(
+            function (entries, obs) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        mostrarElemento(entry.target);
+                        obs.unobserve(entry.target);
+                    }
+                });
+            },
+            {
+                threshold: 0.15
+            }
+        );
+
+        elements.forEach(function (el) {
+            observer.observe(el);
+        });
+    } else {
+        // Navegadores viejos: mostrar todo de una vez
+        elements.forEach(mostrarElemento);
+    }
+});
+
+
+

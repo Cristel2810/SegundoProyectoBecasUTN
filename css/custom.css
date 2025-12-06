@@ -624,3 +624,1125 @@ body {
     color: #111827;
     border: none;
 }
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================
+   INTRO DEBAJO DEL CARRUSEL
+   ========================== */
+
+.section-intro-portal {
+    background: linear-gradient(135deg, #f5f5f7 0%, #ffffff 50%, #e5edf9 100%);
+}
+
+.intro-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.4fr);
+    gap: 2.5rem;
+    align-items: center;
+}
+
+/* Pill pequeño arriba del título */
+.intro-pill {
+    display: inline-block;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: #e5e7eb;
+    color: #374151;
+    padding: 0.18rem 0.7rem;
+    border-radius: 999px;
+    margin-bottom: 0.4rem;
+}
+
+/* Lista con íconos de check */
+.intro-list {
+    list-style: none;
+    margin: 1.2rem 0 0;
+    padding: 0;
+}
+
+.intro-list li {
+    font-size: 0.9rem;
+    color: #4b5563;
+    margin-bottom: 0.45rem;
+    position: relative;
+    padding-left: 1.4rem;
+}
+
+.intro-list li::before {
+    content: "✔";
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 0.8rem;
+    color: var(--utn-azul);
+}
+
+/* Tarjetas problema / propuesta con color lateral */
+.intro-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.intro-card {
+    background: #ffffff;
+    border-radius: 1.1rem;
+    padding: 1rem 1.1rem;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+    border-left: 4px solid var(--utn-azul);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.intro-card--problema {
+    border-left-color: #b91c1c;
+}
+
+.intro-card--propuesta {
+    border-left-color: #15803d;
+}
+
+.intro-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 34px rgba(15, 23, 42, 0.16);
+}
+
+@media (max-width: 768px) {
+    .intro-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .intro-cards {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .intro-card {
+        flex: 1 1 220px;
+    }
+}
+
+
+
+
+
+
+
+/* ==========================
+   SECCIÓN DE PASOS
+   ========================== */
+
+.section-title-center {
+    text-align: center;
+}
+
+.section-subtitle-center {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.section-pasos {
+    background: #ffffff;
+}
+
+.pasos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1.5rem;
+}
+
+.paso-card {
+    background: #ffffff;
+    border-radius: 1.2rem;
+    padding: 1.5rem 1.4rem;
+    box-shadow: 0 12px 26px rgba(15, 23, 42, 0.08);
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.paso-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 18px 36px rgba(15, 23, 42, 0.16);
+}
+
+.paso-badge {
+    display: inline-block;
+    margin-bottom: 0.6rem;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #0f172a;
+    background: #e5edf9;
+    border-radius: 999px;
+    padding: 0.2rem 0.8rem;
+}
+
+
+
+
+
+
+
+/* =========================================
+   INTRO ANIMADA DEBAJO DEL CARRUSEL
+   ========================================= */
+
+.section-intro-animated {
+    position: relative;
+    overflow: hidden;
+    padding: 3.5rem 0 3.8rem;
+    background: radial-gradient(circle at top left, #0f172a 0%, #0b3b8c 40%, #1d4ed8 75%, #38bdf8 100%);
+    color: #f9fafb;
+}
+
+/* capa de “luces” animadas */
+.intro-gradient-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.35) 0, transparent 45%),
+                radial-gradient(circle at 80% 80%, rgba(251, 146, 60, 0.35) 0, transparent 50%);
+    mix-blend-mode: screen;
+    opacity: 0.9;
+    pointer-events: none;
+    animation: gradientShift 10s ease-in-out infinite alternate;
+}
+
+@keyframes gradientShift {
+    from {
+        transform: translate3d(0, 0, 0);
+    }
+    to {
+        transform: translate3d(-20px, -10px, 0);
+    }
+}
+
+.intro-animated-grid {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.5fr);
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.intro-animated-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin: 0 0 0.7rem;
+}
+
+.intro-animated-lead {
+    font-size: 0.98rem;
+    margin: 0 0 1.4rem;
+    max-width: 520px;
+}
+
+/* chips */
+.intro-animated-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.intro-chip {
+    font-size: 0.78rem;
+    padding: 0.25rem 0.9rem;
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.7);
+    border: 1px solid rgba(248, 250, 252, 0.35);
+    box-shadow: 0 10px 20px rgba(15, 23, 42, 0.5);
+}
+
+/* burbujas animadas */
+.intro-bubbles {
+    display: grid;
+    gap: 0.9rem;
+}
+
+.intro-bubble-card {
+    background: rgba(15, 23, 42, 0.88);
+    border-radius: 1.1rem;
+    padding: 0.9rem 1rem;
+    box-shadow: 0 16px 32px rgba(15, 23, 42, 0.7);
+    border: 1px solid rgba(148, 163, 184, 0.6);
+    font-size: 0.86rem;
+    transform: translateY(0);
+    animation: floatSoft 6s ease-in-out infinite alternate;
+}
+
+.intro-bubble-card h3 {
+    margin: 0 0 0.35rem;
+    font-size: 0.96rem;
+}
+
+.intro-bubble-card p {
+    margin: 0;
+    color: #e5e7eb;
+}
+
+.intro-bubble-1 { animation-delay: 0s; }
+.intro-bubble-2 { animation-delay: 0.8s; }
+.intro-bubble-3 { animation-delay: 1.6s; }
+
+@keyframes floatSoft {
+    from { transform: translateY(0); }
+    to   { transform: translateY(-8px); }
+}
+
+/* =========================================
+   BLOQUE PROBLEMA / PROPUESTA CON RIBBON
+   ========================================= */
+
+.section-ps-ribbon {
+    position: relative;
+    padding: 3.2rem 0 3.6rem;
+    background: linear-gradient(180deg, #0b3b8c 0%, #0f172a 40%, #f9fafb 41%, #f9fafb 100%);
+}
+
+/* “cinta” blanca que se superpone */
+.ps-ribbon-inner {
+    position: relative;
+    margin-top: 2.2rem;
+    background: #ffffff;
+    border-radius: 1.6rem;
+    padding: 1.6rem 1.5rem;
+    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.18);
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.4rem;
+}
+
+.ps-ribbon-card {
+    font-size: 0.9rem;
+    color: #4b5563;
+}
+
+.ps-ribbon-card h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.02rem;
+    color: var(--utn-azul-oscuro);
+}
+
+.ps-ribbon-card p {
+    margin: 0 0 0.7rem;
+}
+
+.ps-ribbon-card ul {
+    margin: 0;
+    padding-left: 1.2rem;
+}
+
+.ps-ribbon-card li {
+    margin-bottom: 0.3rem;
+}
+
+/* bordes de color sutiles */
+.ps-ribbon-card--problema {
+    border-right: 2px solid #fecaca;
+}
+
+.ps-ribbon-card--propuesta {
+    border-left: 2px solid #bbf7d0;
+}
+
+.ps-ribbon-note {
+    margin-top: 0.8rem;
+    font-size: 0.8rem;
+    color: #6b7280;
+}
+
+/* =========================================
+   AJUSTES VISUALES CARDS JSON
+   ========================================= */
+
+.section-gray {
+    background: linear-gradient(180deg, #f3f4f6 0%, #eef2ff 45%, #ffffff 100%);
+}
+
+.section-header {
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+}
+
+.section-header .section-subtitle {
+    max-width: 540px;
+}
+
+/* filtro con animación ligera */
+.filter-group {
+    box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
+}
+
+.filter-btn {
+    transition: transform 0.12s ease, box-shadow 0.12s ease, background-color 0.12s ease;
+}
+
+.filter-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 16px rgba(15, 23, 42, 0.18);
+}
+
+/* cards json más “wow” */
+.json-card {
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.json-card:hover {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 0 22px 44px rgba(15, 23, 42, 0.18);
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 900px) {
+    .intro-animated-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .intro-animated-title,
+    .intro-animated-lead {
+        text-align: center;
+    }
+
+    .intro-animated-chips {
+        justify-content: center;
+    }
+
+    .intro-bubbles {
+        max-width: 420px;
+        margin: 0 auto;
+    }
+
+    .ps-ribbon-inner {
+        grid-template-columns: 1fr;
+    }
+
+    .ps-ribbon-card--problema,
+    .ps-ribbon-card--propuesta {
+        border-right: none;
+        border-left: none;
+    }
+}
+/* ============================================================
+   NUEVA INTRO ANIMADA — FLUIDA, MODERNA Y SIN CORTES FEOS
+   ============================================================ */
+
+.section-intro-animated {
+    position: relative;
+    overflow: hidden;
+    padding: 4rem 0 6rem;
+    background: linear-gradient(135deg, #0f172a 0%, #0b3b8c 35%, #1e40af 60%, #38bdf8 100%);
+    color: #f9fafb;
+
+    /* Hace que el degradado se fusione con lo siguiente */
+    border-bottom-left-radius: 40% 8%;
+    border-bottom-right-radius: 40% 8%;
+}
+
+/* EFECTO DE OLAS DE LUZ */
+.intro-gradient-overlay {
+    position: absolute;
+    inset: 0;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(255,255,255,0.18), transparent 55%),
+        radial-gradient(circle at 80% 70%, rgba(56,189,248,0.35), transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(251,146,60,0.28), transparent 60%);
+    
+    animation: lightMove 9s ease-in-out infinite alternate;
+    opacity: 0.9;
+}
+
+@keyframes lightMove {
+    0% {
+        transform: translate(0px, 0px);
+        filter: blur(20px);
+    }
+    50% {
+        transform: translate(25px, -20px);
+        filter: blur(25px);
+    }
+    100% {
+        transform: translate(-20px, 15px);
+        filter: blur(22px);
+    }
+}
+
+/* GRID INTERNO */
+.intro-animated-grid {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+/* Texto */
+.intro-animated-title {
+    font-size: 2.4rem;
+    font-weight: 900;
+    letter-spacing: -1px;
+    margin-bottom: 1rem;
+}
+
+.intro-animated-lead {
+    max-width: 520px;
+    font-size: 1rem;
+    opacity: 0.92;
+}
+
+/* Chips */
+.intro-animated-chips {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+
+.intro-chip {
+    padding: 0.35rem 1rem;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 999px;
+    backdrop-filter: blur(4px);
+    font-size: 0.78rem;
+}
+
+/* BURBUJAS ANIMADAS */
+.intro-bubbles {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.intro-bubble-card {
+    background: rgba(255,255,255,0.06);
+    padding: 1rem 1.2rem;
+    border-radius: 1.2rem;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    border: 1px solid rgba(255,255,255,0.25);
+    transform: translateY(0);
+    animation: bubbleFloat 6s ease-in-out infinite alternate;
+}
+
+@keyframes bubbleFloat {
+    from { transform: translateY(0); }
+    to   { transform: translateY(-12px); }
+}
+
+.intro-bubble-2 { animation-delay: .7s; }
+.intro-bubble-3 { animation-delay: 1.4s; }
+
+/* ============================================================
+   RIBBON — SUAVE, SIN CORTE, MÁS ELEGANTE
+   ============================================================ */
+
+.section-ps-ribbon {
+    background: #f9fafb;
+    margin-top: -4rem; /* Se mete debajo del degradado suavemente */
+    padding: 5rem 0 4rem;
+}
+
+.ps-ribbon-inner {
+    background: #fff;
+    padding: 2rem 2rem;
+    border-radius: 1.6rem;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    position: relative;
+}
+
+/* Separador estilizado */
+.ps-ribbon-inner::before {
+    content: "";
+    position: absolute;
+    top: 15%;
+    bottom: 15%;
+    left: 50%;
+    width: 2px;
+    background: linear-gradient(180deg, #f87171, #4ade80);
+    opacity: 0.4;
+}
+
+/* ============================================================
+   ARREGLAR “CORTE RARO” ENTRE SECCIONES
+   ============================================================ */
+
+.section-ps-ribbon,
+.section-gray {
+    background-clip: padding-box;
+}
+/* ======================================
+   SECCIÓN TIPO "GUÍA DE SERVICIOS"
+   ====================================== */
+
+.becas-services {
+    background: #0c3c66;
+    /* banda azul oscuro arriba */
+    color: #ffffff;
+}
+
+/* parte superior: título y descripción */
+.becas-services-top {
+    padding: 2.2rem 0 1.8rem;
+}
+
+.becas-services-title {
+    font-size: 2rem;
+    font-weight: 800;
+    margin: 0 0 0.4rem;
+}
+
+.becas-services-text {
+    margin: 0;
+    font-size: 0.95rem;
+    max-width: 640px;
+    color: #e5e7eb;
+}
+
+/* parte inferior con tarjetas blancas, estilo Santa Ana */
+.becas-services-bottom {
+    background: #f5f5f7;
+    padding: 2rem 0 2.8rem;
+}
+
+.becas-services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+}
+
+.service-card {
+    background: #ffffff;
+    border-radius: 0.9rem;
+    padding: 0.9rem 1rem;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.7rem;
+    align-items: flex-start;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 6px 16px rgba(15, 23, 42, 0.08);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.service-icon {
+    font-size: 1.4rem;
+    line-height: 1;
+    margin-top: 0.1rem;
+}
+
+.service-card h3 {
+    margin: 0 0 0.2rem;
+    font-size: 0.96rem;
+    color: var(--utn-azul-oscuro);
+}
+
+.service-card p {
+    margin: 0;
+    font-size: 0.86rem;
+    color: #4b5563;
+}
+
+.service-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.16);
+    border-color: var(--utn-azul);
+}
+
+/* ======================================
+   PROBLEMA / PROPUESTA SIMPLE
+   ====================================== */
+
+.problem-simple {
+    background: #ffffff;
+    padding-top: 2.3rem;
+    padding-bottom: 2.8rem;
+}
+
+.problem-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.2rem;
+}
+
+.problem-box {
+    background: #ffffff;
+    border-radius: 1rem;
+    padding: 1.2rem 1.2rem;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.06);
+    font-size: 0.9rem;
+    color: #4b5563;
+}
+
+.problem-box h3 {
+    margin: 0 0 0.45rem;
+    font-size: 1rem;
+    color: var(--utn-azul-oscuro);
+}
+
+.problem-box--solution {
+    border-top: 3px solid var(--utn-naranja);
+}
+
+/* ======================================
+   AJUSTE SUAVE PARA CARDS JSON
+   ====================================== */
+
+.section-gray {
+    background-color: #f9fafb;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .problem-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* =====================================================
+   SECCIÓN GUÍA DE BECAS (DESPUÉS DEL CARRUSEL)
+   ===================================================== */
+
+.section-becas-hero {
+    background: #ffffff;
+    padding: 3rem 0 3.4rem;
+}
+
+.becas-hero-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.2fr);
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.becas-hero-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--utn-azul-oscuro);
+    margin: 0 0 0.6rem;
+}
+
+.becas-hero-title span {
+    color: var(--utn-naranja);
+}
+
+.becas-hero-lead {
+    margin: 0 0 0.6rem;
+    font-size: 1rem;
+    color: #374151;
+}
+
+.becas-hero-text {
+    margin: 0 0 1.2rem;
+    font-size: 0.95rem;
+    color: #4b5563;
+    max-width: 540px;
+}
+
+.btn-becas-hero {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.55rem 1.3rem;
+    border-radius: 999px;
+    background: var(--utn-naranja);
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+
+.btn-becas-hero::after {
+    content: "→";
+    font-size: 0.9rem;
+}
+
+.btn-becas-hero:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.22);
+    background-color: #ff9f1a;
+}
+
+/* Figura con blobs y animación en hover */
+.becas-hero-figure {
+    position: relative;
+    min-height: 260px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.becas-hero-blob {
+    position: absolute;
+    border-radius: 999px;
+    opacity: 0.12;
+}
+
+.becas-hero-blob--pink {
+    width: 260px;
+    height: 260px;
+    background: #f9739b;
+    top: -10%;
+    right: 5%;
+}
+
+.becas-hero-blob--blue {
+    width: 320px;
+    height: 320px;
+    background: #0b3b8c;
+    bottom: -8%;
+    left: 0%;
+}
+
+.becas-hero-image-wrapper {
+    position: relative;
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.35);
+    border: 4px solid #ffffff;
+    background: #0b3b8c;
+}
+
+.becas-hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1);
+    transform-origin: center;
+    transition: transform 0.6s ease;
+}
+
+.becas-hero-figure:hover .becas-hero-image {
+    transform: scale(1.08) translateY(-4px);
+}
+
+/* =====================================================
+   TIPOS DE BECA (TARJETAS CON PANEL DE DETALLE)
+   ===================================================== */
+
+.section-becas-tipos {
+    background: #f5f5f7;
+    padding: 2.5rem 0 3rem;
+}
+
+.becas-tipos-header {
+    max-width: 720px;
+    margin-bottom: 1.8rem;
+}
+
+.becas-tipos-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
+    gap: 1.5rem;
+    align-items: flex-start;
+}
+
+/* grid de tarjetas */
+.becas-tipos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+}
+
+.beca-card {
+    border-radius: 1rem;
+    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.06);
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    overflow: hidden;
+}
+
+.beca-card-main {
+    width: 100%;
+    padding: 0.9rem 1.1rem;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.7rem;
+    align-items: flex-start;
+    background: transparent;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+}
+
+.beca-card-arrow {
+    font-size: 1.2rem;
+    color: var(--utn-azul-oscuro);
+    line-height: 1;
+    margin-top: 0.1rem;
+}
+
+.beca-card-body h3 {
+    margin: 0 0 0.25rem;
+    font-size: 0.98rem;
+    color: var(--utn-azul-oscuro);
+}
+
+.beca-card-body p {
+    margin: 0;
+    font-size: 0.86rem;
+    color: #4b5563;
+}
+
+.beca-card:hover {
+    border-color: var(--utn-azul);
+    box-shadow: 0 12px 26px rgba(15, 23, 42, 0.12);
+}
+
+.beca-card--active {
+    border-color: var(--utn-naranja);
+    box-shadow: 0 14px 30px rgba(249, 146, 0, 0.25);
+}
+
+/* panel de detalle */
+.beca-detail {
+    background: #ffffff;
+    border-radius: 1rem;
+    border: 1px solid #e5e7eb;
+    padding: 1.3rem 1.4rem;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+    font-size: 0.9rem;
+    color: #4b5563;
+}
+
+.beca-detail h3 {
+    margin: 0 0 0.45rem;
+    font-size: 1rem;
+    color: var(--utn-azul-oscuro);
+}
+
+.beca-detail--empty {
+    opacity: 0.8;
+    font-style: italic;
+}
+
+/* RESPONSIVE */
+@media (max-width: 960px) {
+    .becas-hero-inner {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .becas-tipos-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==========================
+   REVEAL ON SCROLL
+   ========================== */
+
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+        opacity 0.6s ease-out,
+        transform 0.6s ease-out;
+}
+
+.reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =====================================
+   SECCIÓN PROBLEMA — TIPO STRIPE
+   ===================================== */
+
+.section-problema-hero {
+    background: #1f1f1f;
+    color: #ffffff;
+    padding: 4rem 0 4.5rem;
+}
+
+.problema-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+    gap: 2.5rem;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.problema-titulo {
+    font-size: 2.6rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin: 0 0 1rem;
+}
+
+.problema-lead {
+    font-size: 1.2rem;
+    margin-bottom: 1.4rem;
+    font-weight: 500;
+}
+
+.problema-detalle {
+    font-size: 0.95rem;
+    margin-bottom: 0.8rem;
+    opacity: 0.9;
+}
+
+.problema-detalle.fuerte {
+    font-weight: 600;
+    opacity: 1;
+}
+
+.problema-ilustracion img {
+    width: 100%;
+    max-width: 480px;
+    display: block;
+}
+/* ====== ACERCA: LAYOUT SIMPLE ====== */
+
+.acerca-top-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.acerca-card {
+    background: #ffffff;
+    border-radius: 1.25rem;
+    padding: 1.5rem 1.75rem;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+    border: 1px solid rgba(226, 232, 240, 0.9);
+}
+
+@media (max-width: 768px) {
+    .acerca-top-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .acerca-card {
+        max-width: 420px;
+        margin-inline: auto;
+    }
+}
+.autor-card {
+    /* ya tienes fondo, borde, etc.  añade transición suave */
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+/* se resalta al pasar el cursor o al enfocarse (tab en teclado / touch) */
+.autor-card:hover,
+.autor-card:focus-within {
+    box-shadow: 0 0 0 3px var(--utn-naranja);
+    transform: translateY(-4px);
+}
+/* ====== ACERCA: layout y ficha del proyecto ====== */
+
+.acerca-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.7fr) minmax(0, 1.3fr);
+    gap: 2.5rem;
+    align-items: stretch;
+}
+
+.acerca-text p {
+    max-width: 34rem;
+}
+
+/* Tarjeta de la ficha */
+.acerca-card {
+    background: #ffffff;
+    border-radius: 1.5rem;
+    padding: 1.6rem 1.8rem;
+    box-shadow: 0 16px 32px rgba(15, 23, 42, 0.10);
+    border: 1px solid rgba(226, 232, 240, 0.9);
+}
+
+.acerca-card-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--utn-azul-oscuro);
+    margin: 0 0 0.9rem;
+}
+
+.acerca-card-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.55rem;
+}
+
+.acerca-card-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    font-size: 0.88rem;
+}
+
+.acerca-label {
+    font-weight: 600;
+    color: var(--utn-azul-oscuro);
+}
+
+.acerca-value {
+    color: #4b5563;
+}
+
+/* En pantallas medianas en adelante, etiqueta a la izquierda y valor a la derecha */
+@media (min-width: 640px) {
+    .acerca-card-item {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 0.75rem;
+    }
+
+    .acerca-value {
+        text-align: right;
+    }
+}
+
+/* Responsive: una columna en móvil */
+@media (max-width: 768px) {
+    .acerca-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .acerca-card {
+        max-width: 480px;
+        margin-inline: auto;
+    }
+}
+
+/* Hover suave en tarjetas de autores (por si no lo tienes ya) */
+.autor-card {
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.autor-card:hover,
+.autor-card:focus-within {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 34px rgba(15, 23, 42, 0.18);
+    border-color: var(--utn-naranja);
+}
