@@ -809,7 +809,7 @@ body {
     position: absolute;
     inset: 0;
     background: radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.35) 0, transparent 45%),
-                radial-gradient(circle at 80% 80%, rgba(251, 146, 60, 0.35) 0, transparent 50%);
+        radial-gradient(circle at 80% 80%, rgba(251, 146, 60, 0.35) 0, transparent 50%);
     mix-blend-mode: screen;
     opacity: 0.9;
     pointer-events: none;
@@ -820,6 +820,7 @@ body {
     from {
         transform: translate3d(0, 0, 0);
     }
+
     to {
         transform: translate3d(-20px, -10px, 0);
     }
@@ -889,13 +890,26 @@ body {
     color: #e5e7eb;
 }
 
-.intro-bubble-1 { animation-delay: 0s; }
-.intro-bubble-2 { animation-delay: 0.8s; }
-.intro-bubble-3 { animation-delay: 1.6s; }
+.intro-bubble-1 {
+    animation-delay: 0s;
+}
+
+.intro-bubble-2 {
+    animation-delay: 0.8s;
+}
+
+.intro-bubble-3 {
+    animation-delay: 1.6s;
+}
 
 @keyframes floatSoft {
-    from { transform: translateY(0); }
-    to   { transform: translateY(-8px); }
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-8px);
+    }
 }
 
 /* =========================================
@@ -1036,6 +1050,7 @@ body {
         border-left: none;
     }
 }
+
 /* ============================================================
    NUEVA INTRO ANIMADA — FLUIDA, MODERNA Y SIN CORTES FEOS
    ============================================================ */
@@ -1056,11 +1071,11 @@ body {
 .intro-gradient-overlay {
     position: absolute;
     inset: 0;
-    background: 
-        radial-gradient(circle at 20% 30%, rgba(255,255,255,0.18), transparent 55%),
-        radial-gradient(circle at 80% 70%, rgba(56,189,248,0.35), transparent 50%),
-        radial-gradient(circle at 40% 80%, rgba(251,146,60,0.28), transparent 60%);
-    
+    background:
+        radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.18), transparent 55%),
+        radial-gradient(circle at 80% 70%, rgba(56, 189, 248, 0.35), transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(251, 146, 60, 0.28), transparent 60%);
+
     animation: lightMove 9s ease-in-out infinite alternate;
     opacity: 0.9;
 }
@@ -1070,10 +1085,12 @@ body {
         transform: translate(0px, 0px);
         filter: blur(20px);
     }
+
     50% {
         transform: translate(25px, -20px);
         filter: blur(25px);
     }
+
     100% {
         transform: translate(-20px, 15px);
         filter: blur(22px);
@@ -1114,8 +1131,8 @@ body {
 
 .intro-chip {
     padding: 0.35rem 1rem;
-    background: rgba(255,255,255,0.1);
-    border: 1px solid rgba(255,255,255,0.25);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.25);
     border-radius: 999px;
     backdrop-filter: blur(4px);
     font-size: 0.78rem;
@@ -1129,23 +1146,33 @@ body {
 }
 
 .intro-bubble-card {
-    background: rgba(255,255,255,0.06);
+    background: rgba(255, 255, 255, 0.06);
     padding: 1rem 1.2rem;
     border-radius: 1.2rem;
     backdrop-filter: blur(10px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-    border: 1px solid rgba(255,255,255,0.25);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.25);
     transform: translateY(0);
     animation: bubbleFloat 6s ease-in-out infinite alternate;
 }
 
 @keyframes bubbleFloat {
-    from { transform: translateY(0); }
-    to   { transform: translateY(-12px); }
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-12px);
+    }
 }
 
-.intro-bubble-2 { animation-delay: .7s; }
-.intro-bubble-3 { animation-delay: 1.4s; }
+.intro-bubble-2 {
+    animation-delay: .7s;
+}
+
+.intro-bubble-3 {
+    animation-delay: 1.4s;
+}
 
 /* ============================================================
    RIBBON — SUAVE, SIN CORTE, MÁS ELEGANTE
@@ -1153,7 +1180,8 @@ body {
 
 .section-ps-ribbon {
     background: #f9fafb;
-    margin-top: -4rem; /* Se mete debajo del degradado suavemente */
+    margin-top: -4rem;
+    /* Se mete debajo del degradado suavemente */
     padding: 5rem 0 4rem;
 }
 
@@ -1161,7 +1189,7 @@ body {
     background: #fff;
     padding: 2rem 2rem;
     border-radius: 1.6rem;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
@@ -1188,6 +1216,7 @@ body {
 .section-gray {
     background-clip: padding-box;
 }
+
 /* ======================================
    SECCIÓN TIPO "GUÍA DE SERVICIOS"
    ====================================== */
@@ -1618,6 +1647,7 @@ body {
     max-width: 480px;
     display: block;
 }
+
 /* ====== ACERCA: LAYOUT SIMPLE ====== */
 
 .acerca-top-grid {
@@ -1645,6 +1675,7 @@ body {
         margin-inline: auto;
     }
 }
+
 .autor-card {
     /* ya tienes fondo, borde, etc.  añade transición suave */
     transition: transform 0.18s ease, box-shadow 0.18s ease;
@@ -1656,6 +1687,7 @@ body {
     box-shadow: 0 0 0 3px var(--utn-naranja);
     transform: translateY(-4px);
 }
+
 /* ====== ACERCA: layout y ficha del proyecto ====== */
 
 .acerca-layout {
@@ -1746,6 +1778,7 @@ body {
     box-shadow: 0 18px 34px rgba(15, 23, 42, 0.18);
     border-color: var(--utn-naranja);
 }
+
 /* =====================================================
    RESPONSIVE GENERAL
    ===================================================== */
@@ -1888,5 +1921,127 @@ body {
     .autores-grid {
         grid-template-columns: 1fr;
         gap: 1rem;
+    }
+}
+
+
+/* ==========================
+   EVALUADOR DE RIESGO DE BECA
+   ========================== */
+
+.riesgo-card {
+    background: #ffffff;
+    border-radius: 1.4rem;
+    padding: 1.75rem 1.9rem;
+    box-shadow: 0 14px 34px rgba(15, 23, 42, 0.10);
+    border: 1px solid #e5e7eb;
+}
+
+.riesgo-card--resultado {
+    background: radial-gradient(circle at top left, #1d4ed8, #0b3b8c 45%, #020617 100%);
+    color: #e5e7eb;
+}
+
+/* Score / título */
+.riesgo-score-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 0.9;
+}
+
+.riesgo-score-title {
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin-top: 0.25rem;
+}
+
+/* Colores por nivel */
+.riesgo-bajo {
+    color: #bbf7d0;
+    /* verde claro */
+}
+
+.riesgo-medio {
+    color: #fde68a;
+    /* amarillo */
+}
+
+.riesgo-alto {
+    color: #fecaca;
+    /* rojo claro */
+}
+
+/* Barra de riesgo */
+.riesgo-bar-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.riesgo-bar-bg {
+    flex: 1;
+    height: 10px;
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.7);
+    overflow: hidden;
+}
+
+.riesgo-bar-fill {
+    height: 100%;
+    width: 0%;
+    border-radius: inherit;
+    transition: width 0.4s ease;
+}
+
+/* Colores de la barra según nivel */
+.riesgo-bar-bajo {
+    background: linear-gradient(90deg, #22c55e, #4ade80);
+}
+
+.riesgo-bar-medio {
+    background: linear-gradient(90deg, #eab308, #facc15);
+}
+
+.riesgo-bar-alto {
+    background: linear-gradient(90deg, #ef4444, #f97373);
+}
+
+.riesgo-percent {
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* Mensaje y lista */
+.riesgo-message {
+    line-height: 1.5;
+}
+
+.riesgo-subtitle {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.riesgo-list {
+    margin: 0;
+    padding-left: 1.1rem;
+    font-size: 0.85rem;
+}
+
+.riesgo-list li {
+    margin-bottom: 0.25rem;
+}
+
+/* Aviso pequeño */
+.riesgo-disclaimer {
+    font-size: 0.7rem;
+    line-height: 1.4;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .riesgo-card {
+        padding: 1.35rem 1.2rem;
     }
 }
