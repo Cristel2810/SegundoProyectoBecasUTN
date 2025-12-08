@@ -142,6 +142,16 @@ document.getElementById("contactForm").addEventListener("submit", async function
         return;
     }
 
+    // Validación simple de formato de correo
+    const email = document.getElementById("correo").value.trim();
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!regex.test(email)) {
+        alert("Ingrese un correo electrónico válido.");
+        return;
+    }
+
+
     submitBtn.textContent = "Enviando...";
     submitBtn.disabled = true;
 

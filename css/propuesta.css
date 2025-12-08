@@ -1,8 +1,8 @@
 /* Contenedor principal */
 main.container {
     max-width: 1100px;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    margin: 0 auto;
+    padding: 2rem 1rem;
 }
 
 /* Tarjetas principales */
@@ -16,86 +16,51 @@ main.container {
 }
 
 /* Mejores separaciones entre secciones */
-section {
-    margin-bottom: 3rem;
-}
+section { margin-bottom: 3rem; }
 
 /* ---------- Stepper ---------- */
-
-.step-box {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-/* Círculos */
 .step-circle {
-    width: 50px !important;
-    height: 50px !important;
-    font-size: 1.1rem;
-    border: 3px solid transparent;
-    transition: all .25s ease;
+    width: 48px !important;
+    height: 48px !important;
+    font-size: 1rem;
+    font-weight: 600;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    background: #e2e8f0;
+    color: #334155;
+    border: 2px solid #cbd5e1;
+    border-radius: 50%;
+    transition: all 0.25s ease;
 }
 
-/* Mejor aspecto al estar activo */
+.step-circle.bg-gray-900,
 .step-circle.active {
-    border-color: var(--utn-naranja);
-    box-shadow: 0 0 12px rgba(255, 102, 0, .4);
+    background: var(--utn-azul) !important;
+    border-color: var(--utn-azul);
+    color: white !important;
+    transform: scale(1.05);
 }
 
-/* Líneas de conexión */
-.step-line {
-    height: 10px;
-    background: #d8dce3;
-    border-radius: 999px;
-    overflow: hidden;
-}
-
-.step-line-fill {
-    height: 100%;
-    background: var(--utn-azul);
-    transition: width .5s ease;
-}
-
-/* --- Menor separación entre título y stepper en móvil --- */
-@media (max-width: 768px) {
-    .step-box {
-        flex-direction: column;
-        gap: 1.5rem;
-    }
+.step-circle.bg-gray-300 {
+    background: #e2e8f0 !important;
 }
 
 /* ---------- Select y Botones ---------- */
-
 #estadoBeca {
     border-radius: 10px;
     background: #f8fafc;
 }
 
-/* Botón animar progreso */
-#btnAnimate {
-    width: 100%;
-    border-radius: 10px;
-}
+#btnAnimate { width: 100%; border-radius: 10px; }
 
-/* ---------- Progreso ---------- */
+#progreso { font-weight: 600; color: white !important; }
 
-#progreso {
-    font-weight: 600;
-    color: white !important;
-}
-
-.progress-label {
-    margin-top: .25rem;
-    font-weight: bold;
-    color: var(--utn-azul-oscuro);
-}
+.progress-label { margin-top: 0.25rem; font-weight: bold; color: var(--utn-azul-oscuro); }
 
 
 /* ---------- Multimedia ---------- */
-
 .media-card {
-    /* Tarjeta multimedia: fondo blanco y tamaño según contenido (imagen) */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -104,10 +69,9 @@ section {
     margin-bottom: 1rem;
     background: #ffffff;
     border: 1px solid #e5e7eb;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
 }
 
-/* Imagen dentro de la tarjeta: la tarjeta se ajusta al tamaño de la imagen */
 .media-card .media-image,
 .media-image {
     display: block;
@@ -117,417 +81,83 @@ section {
     object-fit: contain;
     margin: 0 auto;
     border-radius: 8px;
+    max-height: 720px;
 }
 
-/* Valores grandes para mostrar imágenes más grandes por defecto */
-.media-image { max-height: 720px; }
-
-@media (max-width: 1366px) {
-    .media-image { max-height: 640px; }
-}
-
-@media (max-width: 1024px) {
-    .media-image { max-height: 560px; }
-}
-
-@media (max-width: 768px) {
-    .media-image { max-height: 440px; }
-}
-
+@media (max-width: 1366px) { .media-image { max-height: 640px; } }
+@media (max-width: 1024px) { .media-image { max-height: 560px; } }
+@media (max-width: 768px) { .media-image { max-height: 440px; } }
 @media (max-width: 420px) {
     .media-image { max-height: 320px; }
     .media-card { padding: 0.3rem; }
 }
 
-/* -----------------------------
-   Imágenes dentro de las tarjetas multimedia
-   - Centrar y ajustar márgenes según tamaño
-   - Limitar la altura máxima por breakpoint para mantener proporciones
-   ----------------------------- */
 .media-placeholder img {
     display: block;
     max-width: 100%;
     width: auto;
     height: auto;
-    max-height: 320px; /* límite en pantallas grandes */
+    max-height: 320px;
     object-fit: contain;
     margin: 0 auto;
     border-radius: 8px;
 }
 
-@media (max-width: 1024px) {
-    .media-placeholder img { max-height: 260px; }
-}
-
-@media (max-width: 768px) {
-    .media-placeholder img { max-height: 200px; }
-}
-
-@media (max-width: 420px) {
-    .media-placeholder img { max-height: 150px; }
-}
+@media (max-width: 1024px) { .media-placeholder img { max-height: 260px; } }
+@media (max-width: 768px) { .media-placeholder img { max-height: 200px; } }
+@media (max-width: 420px) { .media-placeholder img { max-height: 150px; } }
 
 
 
 /* ---------- Simulación Manual ---------- */
+.simulacion-card button { border-radius: 8px; padding: 0.5rem 1.25rem; }
 
-.simulacion-card button {
-    border-radius: 8px;
-    padding: .5rem 1.25rem;
-}
-
-/* Botón siguiente más vistoso */
-#nextStep {
-    background: var(--utn-naranja);
-    color: black;
-    transition: .25s ease;
-}
-
-#nextStep:hover {
-    background: #ffb366;
-}
-
-#prevStep:hover {
-    background: #e2e8f0;
-}
+#nextStep { background: var(--utn-naranja); color: black; transition: 0.25s ease; }
+#nextStep:hover { background: #ffb366; }
+#prevStep:hover { background: #e2e8f0; }
 
 /* ---------- Footer ---------- */
+.footer { margin-top: 4rem; }
 
-.footer {
-    margin-top: 4rem;
-}
+/* =============== ESTILOS PRINCIPALES CONSOLIDADOS =============== */
 
-.step-circle {
-    width: 55px !important;
-    height: 55px !important;
-    font-size: 1.2rem;
-    font-weight: 700;
-    background: #e2e8f0;
-    color: #334155;
-    border: 4px solid transparent;
-    transition: all .25s ease, transform .25s ease;
-}
+#stepperContainer h6 { font-size: 0.95rem; font-weight: 700; color: #0f172a; margin-bottom: 2px; }
+#stepperContainer p { font-size: 0.8rem; color: #475569; margin: 0; }
 
-.step-circle.active {
-    background: var(--utn-azul);
-    color: white;
-    border-color: transparent;
-    box-shadow: none;
-    transform: scale(1.05);
-}
+.step-line { height: 4px !important; background: #cbd5e1 !important; border-radius: 999px; }
+#lineProgress { height: 4px !important; background: var(--utn-azul) !important; border-radius: 999px; transition: width 0.55s ease !important; }
 
-.step-line {
-    height: 10px !important;
-    background: #cbd5e1;
-    border-radius: 999px;
-}
+#stepperContainer { margin-top: 1rem; margin-bottom: 3.5rem; }
+#stepperContainer .relative.flex { gap: 0.5rem; padding-bottom: 7rem !important; }
 
-.step-line-fill {
-    height: 100%;
-    background: var(--utn-azul);
-    transition: width .5s ease;
-}
+.step-label { position: absolute; bottom: -6.5rem; left: 50%; transform: translateX(-50%); text-align: center; width: max-content; z-index: 20; pointer-events: none; }
 
-.btn-nav {
-    padding: .6rem 1.4rem;
-    border-radius: 12px;
-    font-weight: 600;
-    border: none;
-    transition: .25s ease;
-}
+/* =============== INPUTS =============== */
+.input-utn { width: 100%; padding: 0.6rem 0.8rem; border: 1px solid #cbd5e1; border-radius: 0.5rem; background: #f8fafc; margin-bottom: 1rem !important; }
+#contenedorPasos label { font-weight: 600; color: #0f172a; margin-bottom: 2px; display: block; }
+#contenedorPasos > div { padding: 2rem 2.2rem; }
+#contenedorPasos button { margin-top: 1.3rem; padding: 0.65rem; font-weight: 600; }
 
-#prevStep.btn-nav {
-    background: #e2e8f0;
-    color: #1e293b;
-}
+/* =============== BOTONES =============== */
+.btn-utn { padding: 0.65rem 1.5rem; border-radius: 12px; font-weight: 600; font-size: 0.9rem; transition: all 0.25s ease; border: none; cursor: pointer; }
+.btn-utn-dark { background: #0f172a; color: #fff; box-shadow: 0 4px 12px rgba(15, 23, 42, 0.22); }
+.btn-utn-dark:hover { background: #1e293b; transform: translateY(-2px); }
+.btn-utn-light { background: #e2e8f0; color: #1e293b; }
+.btn-utn-light:hover { background: #cbd5e1; }
+.btn-utn-green { background: #16a34a; color: white; }
+.btn-utn-green:hover { background: #22c55e; }
+.btn-utn-red { background: #dc2626; color: white; }
+.btn-utn-red:hover { background: #ef4444; }
+#btnPrev, #btnNext { padding: 0.75rem 1.8rem !important; border-radius: 12px; }
 
-#prevStep.btn-nav:hover {
-    background: #cbd5e1;
-}
-
-#nextStep.btn-nav {
-    background: var(--utn-naranja);
-    color: black;
-    box-shadow: 0 4px 12px rgba(255,115,0,0.35);
-}
-
-#nextStep.btn-nav:hover {
-    background: #ffb870;
-    transform: translateY(-2px);
-}
-
-.input-utn {
-    width: 100%;
-    padding: .6rem .8rem;
-    border: 1px solid #cbd5e1;
-    border-radius: .5rem;
-    background: #f8fafc;
-    margin-bottom: .5rem;
-    }
-
-    /* =======================================
-   CORRECCIONES FINALES DE DISEÑO / ESPACIADOS
-   ======================================= */
-
-/* Contenedor general */
-main.container {
-    max-width: 1050px;
-    margin: 0 auto;
-    padding-top: 2rem;
-}
-
-/* Tarjeta principal del stepper */
-.bg-white.rounded-2xl.shadow-md.p-8 {
-    margin-top: 2rem;
-    padding: 2.5rem;
-}
-
-/* Texto superior */
-section.text-center.mb-8 h1 {
-    margin-bottom: .3rem;
-}
-
-/* Párrafo introductorio */
-.bg-white.rounded-2xl.shadow-md.p-8 > p {
-    margin-bottom: 2.5rem !important;
-    line-height: 1.55;
-}
-
-/* === STEPPER === */
-#stepperContainer {
-    margin-top: 1rem;
-    margin-bottom: 3.5rem;
-}
-
-#stepperContainer .relative.flex {
-    padding-bottom: 3.5rem;
-}
-
-#stepperContainer h6 {
-    margin-bottom: 2px;
-}
-
-#stepperContainer p {
-    margin-top: 0;
-}
-
-/* Distancia entre stepper y formulario */
-#contenedorPasos {
-    margin-top: 3rem !important;
-}
-
-/* Tarjetas de los pasos */
-#contenedorPasos > div {
-    padding: 2rem 2.2rem;
-}
-
-/* Inputs del paso 1 más separados */
-#contenedorPasos label {
-    font-weight: 600;
-    color: #0f172a;
-    margin-bottom: 2px;
-    display: block;
-}
-
-#contenedorPasos .input-utn {
-    margin-bottom: 1rem !important;
-}
-
-/* Botón Enviar (paso 1) */
-#contenedorPasos button {
-    margin-top: 1.3rem;
-    padding: .65rem;
-    font-weight: 600;
-}
-
-/* Botones Prev / Next */
-#btnPrev, #btnNext {
-    padding: .75rem 1.8rem !important;
-    border-radius: 12px;
-}
-
-/* Sección "Simulación interactiva" */
-.simulacion-card {
-    margin-top: 4rem !important;
-}
-
-/* Ajustes de los botones inferiores manuales */
-.simulacion-card button {
-    padding: .65rem 1.5rem;
-    margin-top: .5rem;
-}
-
-/* Footer más separado */
-footer.footer {
-    margin-top: 5rem;
-}
-
-#lineProgress {
-    transition: width .55s ease-in-out !important;
-}
-
-#stepperContainer .rounded-full {
-    width: 48px !important;
-    height: 48px !important;
-    font-size: 1rem;
-    font-weight: 600;
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
-    border: 2px solid #cbd5e1;
-    transition: all .25s ease-in-out;
-}
-
-/* Paso activo */
-#stepperContainer .rounded-full.bg-gray-900 {
-    background: var(--utn-azul) !important;
-    border-color: var(--utn-azul);
-    color: white !important;
-    transform: scale(1.05);
-}
-
-/* Pasos pendientes */
-#stepperContainer .rounded-full.bg-gray-300 {
-    background: #e2e8f0 !important;
-    color: #334155 !important;
-}
-
-/* Etiquetas debajo */
-#stepperContainer h6 {
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: #0f172a;
-}
-
-#stepperContainer p {
-    font-size: 0.8rem;
-    color: #475569;
-}
-
-/* Línea gris (estilo Flowbite) */
-#stepperContainer .bg-gray-300 {
-    background-color: #cbd5e1 !important;
-}
-
-/* Línea animada */
-#lineProgress {
-    height: 4px !important;
-    background: var(--utn-azul) !important;
-    border-radius: 999px;
-    transition: width .55s ease !important;
-}
-
-/* Acomodo visual general */
-#stepperContainer .relative.flex {
-    gap: 0.5rem;
-    padding-bottom: 6rem !important;
-}
-/* Mejoramiento responsive parecido al <ol> */
-@media (max-width: 640px) {
-    #stepperContainer h6,
-    #stepperContainer p {
-        display: none;
-    }
-
-    #stepperContainer .rounded-full {
-        width: 42px !important;
-        height: 42px !important;
-    }
-}
-
-/* Espaciado sutil entre steps */
-#stepperContainer .grid {
-    margin: 0 0.3rem;
-}
-
-/* Label debajo del círculo */
-#stepperContainer .step-label{
-  position: absolute;  
-  bottom: -6.5rem; 
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-  width: max-content;
-  z-index: 20;
-  pointer-events: none;
-}
-
-
-#stepperContainer .relative.flex {
-  padding-bottom: 7rem !important;
-}
-
-/* Botones principales (Prev / Next / Enviar / Simular acción) */
-.btn-utn {
-    padding: 0.65rem 1.5rem;
-    border-radius: 12px;
-    font-weight: 600;
-    font-size: 0.9rem;
-    transition: all 0.25s ease;
-    border: none;
-}
-
-/* Botón oscuro (estilo UTN) */
-.btn-utn-dark {
-    background: #0f172a;   /* slate-900 */
-    color: #fff;
-    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.22);
-}
-.btn-utn-dark:hover {
-    background: #1e293b;
-    transform: translateY(-2px);
-}
-
-/* Botón claro */
-.btn-utn-light {
-    background: #e2e8f0;
-    color: #1e293b;
-}
-.btn-utn-light:hover {
-    background: #cbd5e1;
-}
-
-/* Botón verde para "Aceptar" */
-.btn-utn-green {
-    background: #16a34a;
-    color: white;
-}
-.btn-utn-green:hover {
-    background: #22c55e;
-}
-
-/* Botón rojo para "Rechazar" */
-.btn-utn-red {
-    background: #dc2626;
-    color: white;
-}
-.btn-utn-red:hover {
-    background: #ef4444;
-}
-
-/* Botón para subir archivos */
-.btn-utn-gray {
-    background: #f1f5f9;
-    color: #1e293b;
-    border: 1px solid #cbd5e1;
-}
-.btn-utn-gray:hover {
-    background: #e2e8f0;
-}
-
-/* Separación horizontal más amplia entre botones de simulación */
-.simulacion-opciones {
-    display: flex;
-    gap: 1.2rem !important;   /* Aumenta la separación */
-    flex-wrap: wrap;          /* Evita que se desborden en pantallas pequeñas */
-}
-
-/* Botones de resultado del paso 3 con separación */
-.resultado-opciones {
-    display: flex;
-    gap: 1.2rem !important;
-    flex-wrap: wrap;
-}
+/* =============== SECCIONES =============== */
+section.text-center.mb-8 h1 { margin-bottom: 0.3rem; }
+.bg-white.rounded-2xl.shadow-md.p-8 { margin-top: 2rem; padding: 2.5rem; }
+.bg-white.rounded-2xl.shadow-md.p-8 > p { margin-bottom: 2.5rem !important; line-height: 1.55; }
+#contenedorPasos { margin-top: 3rem !important; }
+.simulacion-opciones, .resultado-opciones { display: flex; gap: 1.2rem !important; flex-wrap: wrap; margin-top: 1.5rem; }
+.simulacion-card { margin-top: 4rem !important; }
+footer.footer { margin-top: 5rem; }
 
 /* -----------------------------
    Responsive improvements

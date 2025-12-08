@@ -166,4 +166,55 @@
         transform: translateY(0);
     }
 } */
+
+/* ==========================
+   Mejoras de responsividad
+   ========================== */
+
+/* Apilar columnas del grid en pantallas medianas y menores */
+@media (max-width: 900px) {
+    .grid.gap-10.grid-cols-1.md\:grid-cols-2,
+    .grid.md\:grid-cols-2 { grid-template-columns: 1fr !important; }
+
+    /* Ajustes de padding para tarjetas */
+    .form-card, .info-card { padding: 1rem; }
+
+    /* Reducir altura del mapa para evitar scroll */
+    #hs-grayscale-leaflet { height: 260px !important; }
+
+    /* Botón de enviar ocupa todo el ancho y tiene mayor hit area */
+    .btn-utn-primary, #submitBtn, #submitBtn[type="submit"] { width: 100%; }
+}
+
+/* Smartphones: mejoras adicionales */
+@media (max-width: 640px) {
+    #contactForm input, #contactForm textarea { padding: 10px 12px; font-size: .95rem; }
+
+    /* reCAPTCHA centrado y ligeramente escalado para pantallas pequeñas */
+    .g-recaptcha { transform-origin: center; transform: scale(0.95); }
+
+    /* Captcha interno: optimizar espacio */
+    #captchaTable { gap: .4rem; }
+    #captchaTable div { padding: 6px 8px; min-width: 34px; min-height: 34px; font-size: 1.05rem; }
+
+    /* Modal responsivo */
+    #modal .modal-box, dialog.modal { width: calc(100% - 2rem); max-width: 520px; padding: 1rem; }
+
+    /* Ajustes en el mapa para móviles muy pequeños */
+    #hs-grayscale-leaflet { height: 220px !important; }
+}
+
+@media (max-width: 420px) {
+    .form-card, .info-card { padding: .9rem; }
+    #contactForm label { font-size: .95rem; }
+    #confirmMessage { font-size: .9rem; }
+
+    /* Hacer botones y campos más accesibles en pantallas estrechas */
+    .btn-utn, .btn-utn + .btn-utn { width: 100%; display: block; }
+    .media-card { padding: .4rem; }
+}
+
+/* Pequeña mejora: asegurar que el reCAPTCHA esté centrado en todos los tamaños */
+.g-recaptcha { display: inline-block; margin: 0 auto; }
+
  
